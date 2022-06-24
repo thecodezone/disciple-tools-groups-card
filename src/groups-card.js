@@ -23,14 +23,54 @@ document.addEventListener('alpine:init', () => {
     $store.card = card
 
     return {
-      store: $store
+      store: $store,
+      init() {
+        //When the leader updates, fetch new groups
+        this.$watch('store.leader', this.fetch.bind(this))
+      },
+      /**
+       * Fetch new groups from the server
+       */
+      fetch() {
+        let data = {}
+
+        //Are we fetching for a specific leader?
+        if ($store.leader) {
+          data.assigned_to = [toString($store.leader.ID)]
+        }
+
+        //Fetch the groups
+       $.ajax({
+         url: `${ wpApiDashboard.site_url }/wp-json/dt-posts/v2/groups`,
+         data,
+         headers: {
+           'X-WP-Nonce': wpApiDashboard.nonce //Grab the nonce out of the global object provided by the dashboard plugin
+         }
+       }).then((response) => {
+         if (response?.data?.status) {
+           //Looks like we got an error
+           $store.error = response?.data.message ?? 'An error occurred'
+           return
+         }
+
+         //We only want to display 6 groups
+         response.posts = response.posts.slice(0,6)
+
+         $store.groups = response
+       })
+      }
     }
   })
 
+  /**
+   * The group leader filter typeahead component
+   */
   Alpine.data('leader_filter', () => {
     return {
       store: $store,
       init() {
+
+        //Use JQUERY typeahead to autocomplete the leader filter
         $.typeahead({
           input: this.$refs.filter_field,
           minLength: 0,
@@ -43,6 +83,11 @@ document.addEventListener('alpine:init', () => {
           hint: true,
           emptyTemplate: window.lodash.escape(window.wpApiShare.translations.no_records_found),
           callback: {
+            onSearch: function (node, search) {
+                if (!search) {
+                  $store.leader = null
+                }
+            },
             onClick: function (node, a, item) {
               $store.leader = item
             }
