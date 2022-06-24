@@ -3,7 +3,7 @@ $props = wp_json_encode([
     'groups' => $groups,
     'coach' => $coach,
     'card' => $card,
-])
+]);
 ?>
 
 
@@ -23,21 +23,26 @@ $props = wp_json_encode([
     </div>
 
 
-    <select name="filter" id="filter">
-        <option value="GroupLeader1">Group Leader 1</option>
-        <option value="GroupLeader2">GroupLeader2</option>
-        <option value="GroupLeader3">GroupLeader3</option>
-        <option value="GroupLeader4">GroupLeader4</option>
-    </select>
+    <div class="typeahead__container" x-data="leader_filter">
+        <div class="typeahead__field">
+            <span class="typeahead__query">
+                <input x-ref="filter_field"
+                       class="input-height"
+                       name="leader_filter"
+                       placeholder="<?php echo esc_html_x( "Filter by Group Leader", 'input field placeholder', 'disciple_tools_groups_card' ) ?>"
+                       autocomplete="off">
+            </span>
+        </div>
+    </div>
 
 
     <div class="coach">
         <span>Coach</span>
-        <h2 x-text="coach.name"></h2>
+        <h2 x-text="store.coach.name"></h2>
     </div>
 
     <div class="groups">
-        <template x-for="group in groups.posts" :key="group.ID">
+        <template x-for="group in store.groups.posts" :key="group.ID">
             <div class="group">
                 <h3 x-text="group.post_title"></h3>
             </div>

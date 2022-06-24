@@ -7,7 +7,8 @@ document.addEventListener('alpine:init', () => {
   Alpine.store('groupsCard', {
     groups: [],
     coach: null,
-    card: null
+    card: null,
+    leader: null
   })
   $store = Alpine.store('groupsCard');
 
@@ -22,10 +23,31 @@ document.addEventListener('alpine:init', () => {
     $store.card = card
 
     return {
-      coach: $store.coach, //Just putting this here to allow us to view our store in Alpine DevTools
-      groups: $store.groups,
+      store: $store
+    }
+  })
+
+  Alpine.data('leader_filter', () => {
+    return {
+      store: $store,
       init() {
-        console.log($store.groups, $store.coach, $store.card)
+        $.typeahead({
+          input: this.$refs.filter_field,
+          minLength: 0,
+          accent: true,
+          searchOnFocus: true,
+          source: TYPEAHEADS.typeaheadContactsSource(),
+          templateValue: "{{name}}",
+          template: window.TYPEAHEADS.contactListRowTemplate,
+          dynamic: true,
+          hint: true,
+          emptyTemplate: window.lodash.escape(window.wpApiShare.translations.no_records_found),
+          callback: {
+            onClick: function (node, a, item) {
+              $store.leader = item
+            }
+          },
+        });
       }
     }
   })
