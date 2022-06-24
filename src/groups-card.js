@@ -4,11 +4,49 @@ document.addEventListener('alpine:init', () => {
   /**
    * Create a data store to share data between components.
    */
+  $store = null
   Alpine.store('groupsCard', {
     groups: [],
+    group: null,
     coach: null,
     card: null,
-    leader: null
+    leader: null,
+    error: null,
+    setGroup(group) {
+      $store.group = group;
+    },
+    goToListing: () => {
+      $store.group = null;
+    },
+    fetchGroups() {
+      $store.error = null
+      let data = {}
+
+      //Are we fetching for a specific leader?
+      if ($store.leader) {
+        data.assigned_to = [toString(this.leader.ID)]
+      }
+
+      //Fetch the groups
+      $.ajax({
+        url: `${ wpApiDashboard.site_url }/wp-json/dt-posts/v2/groups`,
+        data,
+        headers: {
+          'X-WP-Nonce': wpApiDashboard.nonce //Grab the nonce out of the global object provided by the dashboard plugin
+        }
+      }).then((response) => {
+        if (response?.data?.status) {
+          //Looks like we got an d
+          $store.error = response?.data.message ?? 'An error occurred'
+          return
+        }
+
+        //We only want to display 6 groups
+        response.posts = response.posts.slice(0,6)
+
+        $store.groups = response
+      })
+    }
   })
   $store = Alpine.store('groupsCard');
 
@@ -26,46 +64,27 @@ document.addEventListener('alpine:init', () => {
       store: $store,
       init() {
         //When the leader updates, fetch new groups
-        this.$watch('store.leader', this.fetch.bind(this))
+        this.$watch('store.leader', () => $store.fetchGroups())
       },
-      /**
-       * Fetch new groups from the server
-       */
-      fetch() {
-        let data = {}
+    }
+  })
 
-        //Are we fetching for a specific leader?
-        if ($store.leader) {
-          data.assigned_to = [toString($store.leader.ID)]
-        }
+  Alpine.data('groups_card_listing', () => {
+    return {
+      store: $store
+    }
+  })
 
-        //Fetch the groups
-       $.ajax({
-         url: `${ wpApiDashboard.site_url }/wp-json/dt-posts/v2/groups`,
-         data,
-         headers: {
-           'X-WP-Nonce': wpApiDashboard.nonce //Grab the nonce out of the global object provided by the dashboard plugin
-         }
-       }).then((response) => {
-         if (response?.data?.status) {
-           //Looks like we got an error
-           $store.error = response?.data.message ?? 'An error occurred'
-           return
-         }
-
-         //We only want to display 6 groups
-         response.posts = response.posts.slice(0,6)
-
-         $store.groups = response
-       })
-      }
+  Alpine.data('groups_card_group', () => {
+    return {
+      store: $store
     }
   })
 
   /**
    * The group leader filter typeahead component
    */
-  Alpine.data('leader_filter', () => {
+  Alpine.data('groups_card_leader_filter', () => {
     return {
       store: $store,
       init() {
