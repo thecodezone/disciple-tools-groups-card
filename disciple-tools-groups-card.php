@@ -83,6 +83,10 @@ class Disciple_Tools_Groups_Card {
 
     private function __construct() {
         $is_rest = dt_is_rest();
+
+        //Load dashboard card class
+        require_once plugin_dir_path( __FILE__ ) . 'dashboard/groups-card.php';
+
         if ( $is_rest && strpos( dt_get_url_path(), 'disciple-tools-groups-card' ) !== false ) {
             require_once( 'rest-api/rest-api.php' ); // adds starter rest api class
         }
