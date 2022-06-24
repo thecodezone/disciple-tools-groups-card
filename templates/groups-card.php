@@ -44,6 +44,7 @@ $card = $card ?? [
 
 <div class="card-header">
     <?php echo esc_html( $card->label ) ?>
+    <span class="add-group"> + </span>
 </div>
 <div class="card-body"
      x-data="groups_card({
