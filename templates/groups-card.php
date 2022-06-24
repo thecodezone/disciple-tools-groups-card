@@ -38,6 +38,12 @@ $user = $user ?? [
 $card = $card ?? [
     'handle' => 'groups-card',
     ];
+
+$props = wp_json_encode([
+    'groups' => $groups,
+    'coach' => $coach,
+    'card' => $card,
+])
 ?>
 
 
@@ -46,11 +52,7 @@ $card = $card ?? [
     <?php echo esc_html( $card->label ) ?>
 </div>
 <div class="card-body"
-     x-data="groups_card({
-    groups: <?php echo wp_json_encode( $groups ) ?>
-    user: <?php echo json_encode( $user ) ?>
-    card: <?php echo json_encode( $card ) ?>
-})">
+     x-data='groups_card(<?php echo $props ?>)'>
     <span class="numberCircle">&nbsp;<span id="active_contacts">-</span>&nbsp;</span>
     <a class="view-all button"
        href="<?php echo esc_url( home_url( '/' ) ) . "contacts/new" ?>">

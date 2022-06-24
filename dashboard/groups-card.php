@@ -4,12 +4,11 @@
  * Your custom card class
  */
 class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
-
     public function __construct( $handle, $label, $params = [] ) {
 
         parent::__construct( $handle, $label, $params );
 
-        add_filter( 'script_loader_tag', [$this, 'defer_scripts'], 10, 3 );
+        add_filter( 'script_loader_tag', [ $this, 'defer_alpine' ], 10, 3 );
     }
 
     /**
@@ -22,7 +21,7 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
         wp_enqueue_style( 'groups-card', plugin_dir_url( __FILE__ ) . '../src/groups-card.css', [], filemtime( plugin_dir_path( __FILE__ ) . '../src/groups-card.css' ) );
     }
 
-    public function defer_scripts ( $tag, $handle ) {
+    public function defer_alpine( $tag, $handle ) {
 
         if ( $handle !== 'alpine.js' ) {
             return $tag;
@@ -35,23 +34,29 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
      * Render the card
      */
     public function render() {
-        $groups = DT_Posts::get_viewable_compact( 'groups', '' );
-        $user = Disciple_Tools_Users::get_base_user( get_current_user_id() );
-        $coach = $user;
+        $groups = DT_Posts::list_posts( 'groups', [], true );
+
+        //We only want to list 6 groups.
+        $groups['posts'] = array_slice( $groups['posts'], 0, 6 );
+
+        //Assume the current user's contact is the coach at load
+        $coach = DT_Posts::get_post( 'contacts', Disciple_Tools_Users::get_contact_for_user( get_current_user_id() ) );
+
+        //The card data
         $card = $this;
+
         require( plugin_dir_path( __FILE__ ) . '../templates/groups-card.php' );
     }
 }
 
-/**
- * Next, register our class. This can be done in the after_setup_theme hook.
- */
-DT_Dashboard_Plugin_Cards::instance()->register(
-    new DT_Groups_Dashboard_Card(
-        'groups',
-        __( 'Groups', 'disciple-tools-groups-card' ),
-        [
-            'priority' => 1,
-            'span'     => 1
-        ]
-    ) );
+if ( current_user_can( 'access_groups' ) ) {
+    DT_Dashboard_Plugin_Cards::instance()->register(
+        new DT_Groups_Dashboard_Card(
+            'groups',
+            __( 'Groups', 'disciple-tools-groups-card' ),
+            [
+                'priority' => 1,
+                'span'     => 1
+            ]
+        ) );
+}
