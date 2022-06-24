@@ -52,9 +52,33 @@ $card = $card ?? [
     user: <?php echo json_encode( $user ) ?>
     card: <?php echo json_encode( $card ) ?>
 })">
-    <span class="numberCircle">&nbsp;<span id="active_contacts">-</span>&nbsp;</span>
-    <a class="view-all button"
-       href="<?php echo esc_url( home_url( '/' ) ) . "contacts/new" ?>">
-        <?php esc_html_e( "Add a contact", 'disciple-tools-dashboard' ) ?>
-    </a>
+
+    <div class="search-container">
+        <form action="/action_page.php">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit">Submit</button>
+        </form>
+    </div>
+
+
+    <select name="filter" id="filter">
+        <option value="GroupLeader1">Group Leader 1</option>
+        <option value="GroupLeader2">GroupLeader2</option>
+        <option value="GroupLeader3">GroupLeader3</option>
+        <option value="GroupLeader4">GroupLeader4</option>
+    </select>
+
+
+    <div class="coach">
+        <span>Coach</span>
+        <h2>John Smith</h2>
+    </div>
+
+    <div class="groups">
+        <div class="group">
+            <h3>Group Name</h3>
+            <span>Group Location</span>
+        </div>
+    </div>
+
 </div>
