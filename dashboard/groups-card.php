@@ -34,9 +34,8 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
      * Render the card
      */
     public function render() {
-        $groups = DT_Posts::list_posts( 'groups', [], true );
-
         //We only want to list 6 groups.
+        $groups = DT_Posts::list_posts( 'groups', [], true );
         $groups['posts'] = array_slice( $groups['posts'], 0, 6 );
 
         //Assume the current user's contact is the coach at load

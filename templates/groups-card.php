@@ -33,14 +33,14 @@ $props = wp_json_encode([
 
     <div class="coach">
         <span>Coach</span>
-        <h2>John Smith</h2>
+        <h2 x-text="coach.name"></h2>
     </div>
 
     <div class="groups">
-        <div class="group">
-            <h3>Group Name</h3>
-            <span>Group Location</span>
-        </div>
+        <template x-for="group in groups.posts" :key="group.ID">
+            <div class="group">
+                <h3 x-text="group.post_title"></h3>
+            </div>
+        </template>
     </div>
-
 </div>

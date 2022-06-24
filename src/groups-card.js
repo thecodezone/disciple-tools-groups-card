@@ -1,22 +1,31 @@
-let store = null;
+let $store = null;
 
 document.addEventListener('alpine:init', () => {
+  /**
+   * Create a data store to share data between components.
+   */
   Alpine.store('groupsCard', {
     groups: [],
     coach: null,
     card: null
   })
-  store = Alpine.store('groupsCard');
+  $store = Alpine.store('groupsCard');
 
+  /**
+   * The groups card component
+   */
   Alpine.data('groups_card', ({groups, coach, card}) => {
-    store.groups = groups
-    store.coach = coach
-    store.card = card
+
+    //Hydrate the store on init
+    $store.groups = groups
+    $store.coach = coach
+    $store.card = card
 
     return {
-      store: store,
+      coach: $store.coach, //Just putting this here to allow us to view our store in Alpine DevTools
+      groups: $store.groups,
       init() {
-        console.log(store.groups, store.coach, store.card)
+        console.log($store.groups, $store.coach, $store.card)
       }
     }
   })
