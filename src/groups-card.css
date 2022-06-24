@@ -1,5 +1,6 @@
 :root {
     --green: #2DA800;
+    --white: #fff;
 }
 .dash-card--groups {
 }
@@ -19,4 +20,33 @@
     height: 32px;
     justify-content: center;
     width: 32px;
+}
+
+.dash-card--groups .card-body .search-container form {
+    display: flex;
+    height: 40px;
+    margin-bottom: 20px;;
+}
+.dash-card--groups .card-body .search-container input {
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 8px 0 0 8px;
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 3px 6px rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.4);
+    height: 100%;
+}
+.dash-card--groups .card-body .search-container button {
+    background-color: var(--green);
+    border-radius:  0 8px 8px 0;
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 800;
+    gap: 8px;
+    justify-content: center;
+    letter-spacing: -0.02em;
+    line-height: 16px;
+    padding: 12px 20px;
+    width: 83px;
+    height: 100%;
+
 }

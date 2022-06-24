@@ -16,9 +16,9 @@ $props = wp_json_encode([
     x-data='groups_card(<?php echo $props ?>)'>
 
     <div class="search-container">
-        <form action="/action_page.php">
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit">Submit</button>
+        <form action="#">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">Search</button>
         </form>
     </div>
 
