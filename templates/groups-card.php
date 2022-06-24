@@ -1,44 +1,4 @@
 <?php
-$groups = $groups ?? [
-        'total' => 5,
-        'posts' =>
-            [
-                0 =>
-                    [
-                        'ID'   => '434',
-                        'name' => 'A brand new group',
-                    ],
-                1 =>
-                    [
-                        'ID'   => '322',
-                        'name' => 'This is a group name',
-                    ],
-                2 =>
-                    [
-                        'ID'   => '320',
-                        'name' => 'This is the group',
-                    ],
-                3 =>
-                    [
-                        'ID'   => '6',
-                        'name' => 'Craig Wann',
-                    ],
-                4 =>
-                    [
-                        'ID'   => '115',
-                        'name' => 'Group101',
-                    ],
-            ],
-    ];
-$user = $user ?? [
-        'ID'    => 5,
-        'name'  => 'craig',
-        'title' => 'craig',
-    ];
-$card = $card ?? [
-    'handle' => 'groups-card',
-    ];
-
 $props = wp_json_encode([
     'groups' => $groups,
     'coach' => $coach,

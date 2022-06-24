@@ -9,15 +9,15 @@ document.addEventListener('alpine:init', () => {
   store = Alpine.store('groupsCard');
 
   Alpine.data('groups_card', ({groups, coach, card}) => {
-    console.log('store', store)
     store.groups = groups
     store.coach = coach
     store.card = card
 
-    return  ({
+    return {
+      store: store,
       init() {
         console.log(store.groups, store.coach, store.card)
       }
-    })
+    }
   })
 })
