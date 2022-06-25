@@ -18,9 +18,14 @@ document.addEventListener('alpine:init', () => {
     goToListing: () => {
       $store.group = null;
     },
-    fetchGroups() {
+    fetchGroups(text = null) {
       $store.error = null
       let data = {}
+
+      //Are we searching?
+      if (text) {
+        data.text = text
+      }
 
       //Are we fetching for a specific leader?
       if ($store.leader) {
@@ -69,15 +74,34 @@ document.addEventListener('alpine:init', () => {
     }
   })
 
+  /**
+   * The groups card listing view
+   */
   Alpine.data('groups_card_listing', () => {
     return {
       store: $store
     }
   })
 
+  /**
+   * The groups card group view
+   */
   Alpine.data('groups_card_group', () => {
     return {
       store: $store
+    }
+  })
+
+  /**
+   *  The groups card search component
+   */
+  Alpine.data('groups_card_search', () => {
+    return {
+      store: $store,
+      text: '',
+      search() {
+        $store.fetchGroups(this.text)
+      }
     }
   })
 

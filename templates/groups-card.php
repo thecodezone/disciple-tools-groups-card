@@ -12,7 +12,7 @@ $props = wp_json_encode( [
     <span class="add-group"> + </span>
 </div>
 
-<div class="card-body"
+<div class="card-body card-body--scroll"
      x-data='groups_card(<?php echo $props ?>)'>
 
     <!-- THE GROUP LISTING VIEW -->
