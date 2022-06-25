@@ -45,7 +45,7 @@ $props = wp_json_encode( [
 
             <h1 x-text="store.group.post_title"></h1>
             <div class="breadcrumbs">
-                <a x-on:click.prevent="store.goToListing.bind(store)">Groups</a> > <a x-text="store.group.post_title"></a>
+                <a x-on:click.prevent="store.goToListing">Groups</a> > <a x-text="store.group.post_title"></a>
             </div>
         </div>
     </template>
