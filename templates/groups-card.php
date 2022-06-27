@@ -63,7 +63,7 @@ $props = wp_json_encode( [
             <hr/>
 
             <a class="button"
-               href="store.group.permalink">
+               :href="store.group.permalink">
                 <?php _e( 'View Group Profile', 'disciple_tools_groups_card' ) ?>
             </a>
 
