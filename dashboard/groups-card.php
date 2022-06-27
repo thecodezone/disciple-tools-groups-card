@@ -16,7 +16,11 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
      */
     public function setup() {
         wp_enqueue_script( 'alpine.js', 'https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js', [], '3.10.2', true );
-        wp_enqueue_script( 'groups-card', plugin_dir_url( __FILE__ ) . '../src/groups-card.js', [ 'alpine.js' ], filemtime( plugin_dir_path( __FILE__ ) . '../src/groups-card.js' ) );
+        wp_enqueue_script( 'groups-card-health-circle', plugin_dir_url( __FILE__ ) . '../src/health-circle.js', [], filemtime( plugin_dir_path( __FILE__ ) . '../src/health-circle.js' ) );
+        wp_localize_script( 'groups-card-health-circle', 'churchHealthSettings', array(
+            'post_settings' => DT_Posts::get_post_settings( 'groups'),
+        ) );
+        wp_enqueue_script( 'groups-card', plugin_dir_url( __FILE__ ) . '../src/groups-card.js', [ 'alpine.js', 'groups-card-health-circle' ], filemtime( plugin_dir_path( __FILE__ ) . '../src/groups-card.js' ) );
         wp_enqueue_style( 'groups-card', plugin_dir_url( __FILE__ ) . '../src/groups-card.css', [], filemtime( plugin_dir_path( __FILE__ ) . '../src/groups-card.css' ) );
     }
 
@@ -38,7 +42,8 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
         $groups['posts'] = array_slice( $groups['posts'], 0, 6 );
 
         //Assume the current user's contact is the coach at load
-        $coach = DT_Posts::get_post( 'contacts', Disciple_Tools_Users::get_contact_for_user( get_current_user_id() ) );
+        $user = wp_get_current_user();
+        $coach = DT_Posts::get_post( 'contacts', Disciple_Tools_Users::get_contact_for_user( $user->ID ) );
 
         //The card data
         $card = $this;

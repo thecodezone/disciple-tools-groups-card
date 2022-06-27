@@ -11,6 +11,7 @@ document.addEventListener('alpine:init', () => {
     coach: null,
     card: null,
     leader: null,
+    user: null,
     error: null,
     setGroup(group) {
       $store.group = group;
@@ -58,12 +59,13 @@ document.addEventListener('alpine:init', () => {
   /**
    * The groups card component
    */
-  Alpine.data('groups_card', ({groups, coach, card}) => {
+  Alpine.data('groups_card', ({groups, coach, card, user}) => {
 
     //Hydrate the store on init
     $store.groups = groups
     $store.coach = coach
     $store.card = card
+    $store.user = user
 
     return {
       store: $store,
@@ -144,6 +146,9 @@ document.addEventListener('alpine:init', () => {
        */
       get rosterPaginated() {
         return this.roster.slice(this.offset, this.offset + this.perPage)
+      },
+      init() {
+        initChurchHealthCircle(this.store.group)
       }
     }
   })

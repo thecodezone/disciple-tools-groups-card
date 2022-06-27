@@ -1,5 +1,6 @@
 <?php
 $props = wp_json_encode( [
+    'user' => $user,
     'groups' => $groups,
     'coach'  => $coach,
     'card'   => $card,
@@ -41,9 +42,8 @@ $props = wp_json_encode( [
     </template>
 
     <!-- THE GROUP VIEW -->
-    <template x-data="groups_card_group"
-              x-if="store.group">
-        <div id="group">
+    <template x-if="store.group">
+        <div id="group" x-data="groups_card_group">
             <?php include( 'search.php' ); ?>
             <?php include( 'coach.php' ); ?>
 
@@ -68,7 +68,7 @@ $props = wp_json_encode( [
             </a>
 
             <div class="group__health">
-
+                <?php (new DT_Groups_Base())->dt_details_additional_section('health-metrics', 'groups'); ?>
             </div>
 
             <template x-if="rosterPaginated && rosterPaginated.length">
