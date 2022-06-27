@@ -24,9 +24,7 @@
             <?php _e( 'View Group Profile', 'disciple_tools_groups_card' ) ?>
         </a>
 
-        <div class="group__health">
-            <?php (new DT_Groups_Base())->dt_details_additional_section('health-metrics', 'groups'); ?>
-        </div>
+        <?php include( 'church-health.php' ); ?>
 
         <template x-if="rosterPaginated && rosterPaginated.length">
             <div class="group__members">
