@@ -88,6 +88,8 @@ document.addEventListener('alpine:init', () => {
    */
   Alpine.data('groups_card_group', () => {
     return {
+      perPage: 6,
+      offset: 0,
       store: $store,
       /**
        * Getter for group coaches
@@ -135,6 +137,13 @@ document.addEventListener('alpine:init', () => {
           }
           return [...roster, member]
         }, [])
+      },
+      /**
+       * Getter for the combined group roster (coaches, leaders and members)
+       * @returns {T[]|*[]}
+       */
+      get rosterPaginated() {
+        return this.roster.slice(this.offset, this.offset + this.perPage)
       }
     }
   })

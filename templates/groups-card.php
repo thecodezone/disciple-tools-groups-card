@@ -71,7 +71,7 @@ $props = wp_json_encode( [
 
             </div>
 
-            <template x-if="roster && roster.length">
+            <template x-if="rosterPaginated && rosterPaginated.length">
                 <div class="group__members">
                     <h3><?php _e('Members', 'disciple_tools_groups_card' ) ?></h3>
                     <template x-for="member in roster"
