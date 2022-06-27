@@ -5,7 +5,6 @@
  */
 class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
     public function __construct( $handle, $label, $params = [] ) {
-
         parent::__construct( $handle, $label, $params );
 
         add_filter( 'script_loader_tag', [ $this, 'defer_alpine' ], 10, 3 );
@@ -35,7 +34,7 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
      */
     public function render() {
         //We only want to list 6 groups.
-        $groups = DT_Posts::list_posts( 'groups', [], true );
+        $groups = DT_Posts::list_posts( 'groups', [], true);
         $groups['posts'] = array_slice( $groups['posts'], 0, 6 );
 
         //Assume the current user's contact is the coach at load

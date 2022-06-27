@@ -29,7 +29,10 @@ $props = wp_json_encode( [
                     <div class="group"
                          x-on:click="store.setGroup(group)">
                         <h3 x-text="group.post_title"></h3>
-                        <p class="location">Group Location</p>
+                        <!-- TO GET THE LOCATION SHOW UP, YOU NEED TO SET A LOCATION IN THE GROUP SETTINGS -->
+                        <template x-if="group?.location_grid && group.location_grid.length">
+                            <p class="location" x-text="group.location_grid[0].label"></p>
+                        </template>
                     </div>
                 </template>
             </div>
