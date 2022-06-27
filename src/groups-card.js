@@ -7,25 +7,53 @@ document.addEventListener('alpine:init', () => {
   $store = null
   Alpine.store('groupsCard', {
     groups: [],
+    offset: 0,
+    perPage: 6,
+    text: '',
     group: null,
     coach: null,
     card: null,
     leader: null,
     user: null,
     error: null,
+    get page() {
+      return Math.floor(this.offset / this.perPage) + 1
+    },
     setGroup(group) {
       $store.group = group;
+    },
+    next() {
+      if ($store.offset + $store.perPage < $store.groups.total) {
+        console.log('here')
+        $store.offset += $store.perPage;
+        this.fetchGroups()
+      }
+    },
+    prev() {
+      if ($store.offset > 0) {
+        $store.offset -= $store.perPage;
+        this.fetchGroups()
+      }
+    },
+    goTOPage(page) {
+      $store.offset = (page - 1) * $store.perPage;
+      this.fetchGroups()
     },
     goToListing: () => {
       $store.group = null;
     },
-    fetchGroups(text = null) {
+    fetchGroups() {
       $store.error = null
       let data = {}
 
       //Are we searching?
-      if (text) {
-        data.text = text
+      if ($store.text) {
+        data.text = $store.text
+      }
+
+      //Handle paging
+      if ($store.offset) {
+        data.offset = $store.offset
       }
 
       //Are we fetching for a specific leader?
@@ -48,7 +76,7 @@ document.addEventListener('alpine:init', () => {
         }
 
         //We only want to display 6 groups
-        response.posts = response.posts.slice(0,6)
+        response.posts = response.posts.slice(0,$store.perPage)
 
         $store.groups = response
       })
@@ -159,9 +187,8 @@ document.addEventListener('alpine:init', () => {
   Alpine.data('groups_card_search', () => {
     return {
       store: $store,
-      text: '',
       search() {
-        $store.fetchGroups(this.text)
+        $store.fetchGroups($store.text)
       }
     }
   })

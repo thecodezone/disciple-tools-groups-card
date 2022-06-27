@@ -3,7 +3,7 @@
     <form x-on:submit.prevent="search">
         <input type="text"
                placeholder="Search..."
-               x-model="text"
+               x-model="store.text"
                name="search">
         <button type="submit">Search</button>
     </form>

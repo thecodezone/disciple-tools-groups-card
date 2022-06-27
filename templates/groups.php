@@ -25,7 +25,7 @@
 
             <div class="pagination">
                 <div class="pagination-item-prev"
-                     x-on:click="store.groups.prev()">
+                     x-on:click="store.prev()">
                 </div>
 
                 <div class="numbers">
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="pagination-item-next"
-                     x-on:click="store.groups.next()">
+                     x-on:click="store.next()">
                 </div>
             </div>
 
