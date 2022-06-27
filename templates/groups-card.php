@@ -18,21 +18,4 @@ $props = wp_json_encode( [
 
     <?php include( 'groups.php' ); ?>
     <?php include( 'group.php' ); ?>
-
-    <div class="pagination">
-        <div class="pagination-item-prev"
-                x-on:click="store.groups.prev()">
-        </div>
-        
-        <div class="numbers">
-            <span class="active">1</span>
-            <span>2</span>
-            <span>3</span>
-        </div>
-        
-        <div class="pagination-item-next"
-                x-on:click="store.groups.next()">
-        </div>
-    </div>
-
 </div>
