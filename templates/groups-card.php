@@ -54,7 +54,7 @@ $props = wp_json_encode( [
             <hr/>
 
             <template x-if="store.group.location_grid && store.group.location_grid.length">
-                <div class="group__location"
+                <div class="group__location location"
                      x-text="store.group.location_grid[0].label"></div>
             </template>
 
