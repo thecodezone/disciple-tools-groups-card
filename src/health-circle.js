@@ -45,46 +45,6 @@ const initChurchHealthCircle = (post) => {
   fillOutChurchHealthMetrics();
   distributeItems();
 
-  $('.health-item').on( 'click', function() {
-    let fieldId = $( this ).attr( 'id' ).replace('icon_', '');
-    let already_set = window.lodash.get(post, 'health_metrics', []).includes( fieldId );
-    let update = { values: [ { value : fieldId } ] };
-    if ( already_set ){
-      update.values[0].delete = true;
-    }
-    API.update_post( post_type, post_id, { 'health_metrics': update })
-      .then( groupData => {
-        post = groupData;
-        /* Update icon */
-        if ( $( this ).attr( 'id' ) === 'church_commitment' ) {
-          $( '#health-items-container' ).toggleClass( 'committed' );
-          $( this ).toggleClass( 'practiced-button' );
-          return true;
-        }
-        /* Toggle church health circle item color */
-        $( this ).children( 'img' ).toggleClass( 'practiced-item' );
-      }).catch( err=>{
-      console.log( err );
-    });
-  });
-
-  $('#is-church-switch').on( 'click', function() {
-    let fieldId = 'church_commitment';
-    let already_set = window.lodash.get(post, 'health_metrics', []).includes( fieldId );
-    let update = { values: [ { value : fieldId } ] };
-    if ( already_set ){
-      update.values[0].delete = true;
-    }
-    API.update_post( post_type, post_id, { 'health_metrics': update })
-      .then( groupData => {
-        post = groupData;
-        /* Update commitment circle */
-        $( '#health-items-container' ).toggleClass( 'committed' );
-      }).catch( err=>{
-      console.log( err );
-    });
-  })
-
   /* Dynamically distribute items in Church Health Circle
      according to amount of health metric elements */
   function distributeItems() {
