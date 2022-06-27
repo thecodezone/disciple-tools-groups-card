@@ -128,12 +128,12 @@ document.addEventListener('alpine:init', () => {
           ...this.coaches,
           ...this.leaders,
           ...this.members
-        ].reduce((acc, member) => {
+        ].reduce((roster, member) => {
           //Make sure we don't have duplicates in case a coach or leader is also a member
-          if (acc.find(m => m.ID === member.ID)) {
-            return acc
+          if (roster.find(m => m.ID === member.ID)) {
+            return roster
           }
-          return [...acc, member]
+          return [...roster, member]
         }, [])
       }
     }
