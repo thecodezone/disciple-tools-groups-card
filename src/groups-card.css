@@ -83,7 +83,6 @@
     border-radius: 8px;
 }
 
-/* group of items */
 .typeahead__container.result .typeahead__list {
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -116,3 +115,6 @@
 .typeahead-user-row {
     display: none;
 }
+
+
+/* groups */
