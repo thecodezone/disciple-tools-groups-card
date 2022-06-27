@@ -88,7 +88,54 @@ document.addEventListener('alpine:init', () => {
    */
   Alpine.data('groups_card_group', () => {
     return {
-      store: $store
+      store: $store,
+      /**
+       * Getter for group coaches
+       * @returns {T[]|*[]}
+       */
+      get coaches() {
+        return this.store?.group?.coaches ? this.store.group.coaches.map(member => {
+          member.role = 'coach'
+          return member
+        }) : []
+      },
+      /**
+       * Getter for group leaders
+       * @returns {T[]|*[]}
+       */
+      get leaders() {
+        return this.store?.group?.leaders ? this.store.group.leaders.map(member => {
+          member.role = 'leader'
+          return member
+        }) : []
+      },
+      /**
+       * Getter for group members
+       * @returns {T[]|*[]}
+       */
+      get members() {
+        return this.store?.group?.members ? this.store.group.members.map(member => {
+          member.role = 'member'
+          return member
+        }) : []
+      },
+      /**
+       * Getter for the combined group roster (coaches, leaders and members)
+       * @returns {T[]|*[]}
+       */
+      get roster() {
+        return [
+          ...this.coaches,
+          ...this.leaders,
+          ...this.members
+        ].reduce((acc, member) => {
+          //Make sure we don't have duplicates in case a coach or leader is also a member
+          if (acc.find(m => m.ID === member.ID)) {
+            return acc
+          }
+          return [...acc, member]
+        }, [])
+      }
     }
   })
 

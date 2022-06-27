@@ -71,11 +71,18 @@ $props = wp_json_encode( [
 
             </div>
 
-            <div class="group__members">
-                <h3><?php _e('Members', 'disciple_tools_groups_card' ) ?></h3>
-
-            </div>
-
+            <template x-if="store.group.members && store.group.members.length">
+                <div class="group__members">
+                    <h3><?php _e('Members', 'disciple_tools_groups_card' ) ?></h3>
+                    <template x-for="member in members"
+                              :key="member.ID">
+                        <div class="member">
+                            <h4 x-text="member.post_title" class="member__name"></h4>
+                            <p x-text="member.role" class="member__role"></p>
+                        </div>
+                    </template>
+                </div>
+            </template>
 
         </div>
     </template>
