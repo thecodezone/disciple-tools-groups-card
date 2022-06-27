@@ -6,7 +6,7 @@
 }
 
 /* Header */
-.dash-card--groups .card-header { 
+.dash-card--groups .card-header {
     display: flex;
     justify-content: space-between;
 }
@@ -143,7 +143,7 @@
     color: var(--white);
     border-radius: 8px;
 }
-    
+
 .group h3 {
     font-family: 'Poppins';
     font-style: normal;
@@ -162,6 +162,10 @@
     line-height: 16px;
     letter-spacing: -0.02em;
     color: rgba(0, 0, 0, 0.4);
+}
+
+#group .group__church-health .health-item {
+    cursor: default;
 }
 
 
