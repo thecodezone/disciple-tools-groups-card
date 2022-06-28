@@ -19,10 +19,12 @@
             x-text="store.group.post_title"></h3>
         <hr/>
 
-        <a class="button"
-           :href="store.group.permalink">
-            <?php _e( 'View Group Profile', 'disciple_tools_groups_card' ) ?>
-        </a>
+        <div class="group-profile-btn">
+            <a class="button"
+            :href="store.group.permalink">
+                <?php _e( 'View Group Profile', 'disciple_tools_groups_card' ) ?>
+            </a>
+        </div>
 
         <?php include( 'church-health.php' ); ?>
 
