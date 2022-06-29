@@ -34,8 +34,15 @@
                 <template x-for="member in roster"
                           :key="member.ID">
                     <div class="member">
-                        <h4 x-text="member.post_title" class="member__name"></h4>
-                        <p x-text="member.role" class="member__role"></p>
+                        <div class="text">
+                            <h4 x-text="member.post_title" class="member__name"></h4>
+                            <p x-text="member.role" class="member__role"></p>
+                        
+                        </div>
+                        <a class="button"
+                            :href="store.member.permalink">
+                                <?php _e( 'View Profile', '#' ) ?>
+                            </a>
                     </div>
                 </template>
 

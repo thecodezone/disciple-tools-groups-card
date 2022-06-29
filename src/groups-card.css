@@ -241,7 +241,18 @@
     border-left: var(--left-border);
     margin: 8px 0;
     padding: 0 0 0 12px;
+    display: flex;
 }
+
+.member .text {
+    flex-grow: 1;
+}
+.member .button {
+    background-color: var(--green);
+    color: var(--white);
+    font-weight: bold;
+}
+
 .dash-card--groups .group__church-health,
 .dash-card--groups .group__members h3 {
     display: flex;
@@ -263,6 +274,9 @@
 .member__role {
     text-transform: capitalize;
 }
+
+
+
 
 /* search results */
 .search-container .result-count {
