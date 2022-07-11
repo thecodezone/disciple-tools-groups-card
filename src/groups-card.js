@@ -187,6 +187,46 @@ document.addEventListener('alpine:init', () => {
       get rosterPaginated() {
         return this.roster.slice(this.offset, this.offset + this.perPage)
       },
+      /**
+       * Getter for the number of pages in the paginated roster
+       * @returns {number}
+       */
+      get pages() {
+        return Math.ceil(this.roster.length / this.perPage)
+      },
+      /**
+       * Getter for the current page in the paginated roster
+       * @returns {number}
+       */
+      get page() {
+        return Math.floor(this.offset / this.perPage) + 1
+      },
+      /**
+       * Set the page number in the paginated roster
+       * @param page
+       */
+      setPage(page) {
+        this.offset = (page - 1) * this.perPage;
+      },
+      /**
+       * Go back a page
+       */
+      prev() {
+        if (this.offset > 0) {
+          this.offset -= this.perPage;
+        }
+      },
+      /**
+       * Go forward a page
+       */
+      next() {
+        if (this.offset + this.perPage < this.roster.length) {
+          this.offset += this.perPage;
+        }
+      },
+      /**
+       * Fires when the dom is ready
+       */
       init() {
         initChurchHealthCircle(this.store.group)
       }

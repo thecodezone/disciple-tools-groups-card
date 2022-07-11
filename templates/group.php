@@ -31,7 +31,7 @@
         <template x-if="rosterPaginated && rosterPaginated.length">
             <div class="group__members">
                 <h3><?php _e('Members', 'disciple_tools_groups_card' ) ?></h3>
-                <template x-for="member in roster"
+                <template x-for="member in rosterPaginated"
                           :key="member.ID">
                     <div class="member">
                         <div class="text">
@@ -46,21 +46,28 @@
                     </div>
                 </template>
 
-                <div class="pagination">
-                    <div class="pagination-item-prev"
-                         x-on:click="store.groups.prev()">
-                    </div>
+                <template x-if="roster.length">
+                    <div class="pagination">
+                        <div class="pagination-item pagination-item-prev"
+                             x-on:click="prev()">
+                        </div>
 
-                    <div class="numbers">
-                        <span class="active">1</span>
-                        <span>2</span>
-                        <span>3</span>
-                    </div>
+                        <div class="numbers">
+                            <template x-for="i in pages"
+                                      :key="i">
+                                <template x-if="i > page - 3 && i < page + 3">
+                             <span x-text="i"
+                                   x-on:click="setPage(i)"
+                                   :class="{'pagination-item': true, number: true, active: i === page}"></span>
+                                </template>
+                            </template>
+                        </div>
 
-                    <div class="pagination-item-next"
-                         x-on:click="store.groups.next()">
+                        <div class="pagination-item pagination-item-next"
+                             x-on:click="next()">
+                        </div>
                     </div>
-                </div>
+                </template>
 
             </div>
         </template>
