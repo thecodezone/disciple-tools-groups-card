@@ -1,13 +1,15 @@
 <?php
     $group_preferences = dt_get_option( 'group_preferences' );
     $fields = DT_Posts::get_post_field_settings( 'groups' );
+    $group_label = esc_html(DT_Posts::get_label_for_post_type( 'groups', true ));
+
     //<!-- Health Metrics-->
     if ( empty( $group_preferences['church_metrics'] ) ) {
         return;
     }
 ?>
 <div class="group__church-health">
-    <h3><?php _e( 'Church Health', 'disciple_tools_groups_card' ) ?></h3>
+    <h3><?php echo esc_html($group_label) . _e( ' Health', 'disciple_tools_groups_card' ); ?></h3>
 
     <div class="grid-x">
         <div style="margin-right:auto; margin-left:auto;min-height:302px">

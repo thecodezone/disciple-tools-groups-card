@@ -6,7 +6,6 @@
 class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
     public function __construct( $handle, $label, $params = [] ) {
         parent::__construct( $handle, $label, $params );
-
         add_filter( 'script_loader_tag', [ $this, 'defer_alpine' ], 10, 3 );
     }
 
@@ -41,9 +40,15 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
         $groups = DT_Posts::list_posts( 'groups', [], true);
         $groups['posts'] = array_slice( $groups['posts'], 0, 6 );
 
+        //Post type labels
+        $group_label = DT_Posts::get_label_for_post_type( 'groups', true );
+        $groups_label = DT_Posts::get_label_for_post_type( 'groups' );
+        $leaders_label = DT_Posts::get_post_field_settings( 'groups' )['leaders']['name'];
+
         //Assume the current user's contact is the coach at load
         $user = wp_get_current_user();
         $coach = DT_Posts::get_post( 'contacts', Disciple_Tools_Users::get_contact_for_user( $user->ID ) );
+        $leader_label = DT_Posts::get_post_field_settings( 'groups' )['leaders']['name'];
 
         //The card data
         $card = $this;

@@ -5,7 +5,7 @@
         <?php include( 'coach.php' ); ?>
 
         <div class="group__breadcrumbs breadcrumbs">
-            <a x-on:click.prevent="store.goToListing">Groups</a> > <a x-text="store.group.post_title"></a>
+            <a x-on:click.prevent="store.goToListing"><?php echo esc_html($groups_label); ?></a> > <a x-text="store.group.post_title"></a>
         </div>
 
         <hr/>
@@ -22,7 +22,7 @@
         <div class="group-profile-btn">
             <a class="button"
             :href="store.group.permalink">
-                <?php _e( 'View Group Profile', 'disciple_tools_groups_card' ) ?>
+                <?php echo __( 'View ', 'disciple_tools_groups_card') . esc_html($group_label) . __(' Profile', 'disciple_tools_groups_card' ) ?>
             </a>
         </div>
 
@@ -37,11 +37,11 @@
                         <div class="text">
                             <h4 x-text="member.post_title" class="member__name"></h4>
                             <p x-text="member.role" class="member__role"></p>
-                        
+
                         </div>
                         <a class="button"
                             :href="store.member.permalink">
-                                <?php _e( 'View Profile', '#' ) ?>
+                                <?php _e( 'View Profile', 'disciple_tools_groups_card' ) ?>
                             </a>
                     </div>
                 </template>
