@@ -5,10 +5,12 @@
                placeholder="Search..."
                x-model="store.text"
                name="search">
-        <button type="submit">Search</button>
+        <button type="submit"><?php echo _e('Search', 'disciple_tools_groups_card'); ?></button>
     </form>
 
-    <!-- <div class="result-count">
-        19 Results Returned
-    </div> -->
+    <template x-if="store.numResults !== null">
+        <div class="result-count">
+            <span x-text="store.numResults"></span> <?php echo _e('Results Returned', 'disciple_tools_groups_card'); ?>
+        </div>
+    </template>
 </div>

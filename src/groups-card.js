@@ -17,6 +17,7 @@ document.addEventListener('alpine:init', () => {
     leader: null,
     user: null,
     error: null,
+    numResults: null,
     get page() {
       return Math.floor(this.offset / this.perPage) + 1
     },
@@ -47,6 +48,7 @@ document.addEventListener('alpine:init', () => {
     },
     fetchGroups() {
       $store.error = null
+      $store.numResults = null
       let data = {}
 
       //Are we searching?
@@ -82,6 +84,7 @@ document.addEventListener('alpine:init', () => {
         response.posts = response.posts.slice(0,$store.perPage)
 
         $store.groups = response
+        $store.numResults = response.total
       })
     }
   })
