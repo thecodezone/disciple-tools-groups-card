@@ -7,4 +7,8 @@
                name="search">
         <button type="submit">Search</button>
     </form>
+
+    <!-- <div class="result-count">
+        19 Results Returned
+    </div> -->
 </div>

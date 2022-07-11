@@ -19,10 +19,12 @@
             x-text="store.group.post_title"></h3>
         <hr/>
 
-        <a class="button"
-           :href="store.group.permalink">
-            <?php _e( 'View Group Profile', 'disciple_tools_groups_card' ) ?>
-        </a>
+        <div class="group-profile-btn">
+            <a class="button"
+            :href="store.group.permalink">
+                <?php _e( 'View Group Profile', 'disciple_tools_groups_card' ) ?>
+            </a>
+        </div>
 
         <?php include( 'church-health.php' ); ?>
 
@@ -32,8 +34,15 @@
                 <template x-for="member in roster"
                           :key="member.ID">
                     <div class="member">
-                        <h4 x-text="member.post_title" class="member__name"></h4>
-                        <p x-text="member.role" class="member__role"></p>
+                        <div class="text">
+                            <h4 x-text="member.post_title" class="member__name"></h4>
+                            <p x-text="member.role" class="member__role"></p>
+                        
+                        </div>
+                        <a class="button"
+                            :href="store.member.permalink">
+                                <?php _e( 'View Profile', '#' ) ?>
+                            </a>
                     </div>
                 </template>
 

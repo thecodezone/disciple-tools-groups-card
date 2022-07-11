@@ -1,6 +1,10 @@
 :root {
     --green: #2DA800;
-    --white: #fff;
+    --white: #ffffff;
+    --navy: #3F729B;
+    --light-gray: #D9D9D9;
+
+    --left-border: 1px solid var(--light-gray);
 }
 .dash-card--groups {
 }
@@ -59,6 +63,8 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 .dash-card--groups .card-body .coach span {
     text-transform: uppercase;
@@ -76,63 +82,60 @@
 }
 
 /* filter */
-.typeahead__container .input-height {
+.dash-card--groups .typeahead__container .input-height {
     box-sizing: border-box;
     background: var(--white);
     border: 0.5px solid rgba(0, 0, 0, 0.4);
     border-radius: 8px;
 }
 
-.typeahead__container.result .typeahead__list {
+.dash-card--groups .typeahead__container.result .typeahead__list {
     -webkit-box-shadow: none;
     box-shadow: none;
     margin-top: 10px;
     padding: 10px 0;
-    background: #FFFFFF;
+    background: var(--white);
     border: 0.5px solid rgba(0, 0, 0, 0.4);
     border-radius: 8px;
 }
 
 /* single item */
-.typeahead__list>li {
+.dash-card--groups .typeahead__list>li,
+.dash-card--groups .typeahead__list>li:hover,
+.dash-card--groups .typeahead__list>li:hover span {
     border: 0;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border-left: 1px solid #D9D9D9;
-    margin-left: 12px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    /* border-left: var(--left-border); */
+    /* margin: 8px 12px;
+    padding: 8px 0; */
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
-    /* identical to box height, or 114% */
     letter-spacing: -0.02em;
     color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-.typeahead-user-row {
+.dash-card--groups .typeahead-user-row {
     display: none;
 }
 
 /* groups */
-
-.groups {
-    margin-top: 2rem;
-}
-.group {
-    border-left: 1px solid #D9D9D9;
+.dash-card--groups .group {
+    border-left: var(--left-border);
     margin: 8px 0;
     padding: 0 0 0 12px;
     display: flex;
     align-items: center;
     gap: .2rem;
 }
-.group .text {
+.dash-card--groups .group .text {
     flex-grow: 1;
 }
-.group .fi-info {
+.dash-card--groups .group .fi-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -144,7 +147,9 @@
     border-radius: 8px;
 }
 
-.group h3 {
+.dash-card--groups .member__name,
+.dash-card--groups .group__title,
+.dash-card--groups .group h3 {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 800;
@@ -153,51 +158,50 @@
     color: rgba(0, 0, 0, 0.7);
     margin: 0;
 }
-
-.group .location {
+.dash-card--groups .member__role,
+.dash-card--groups .group__location,
+.dash-card--groups .group .location {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 10px;
     line-height: 16px;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.02em; 
     color: rgba(0, 0, 0, 0.4);
 }
-
-#group .group__church-health .health-item {
+.dash-card--groups #group .group__church-health .health-item {
     cursor: default;
 }
 
 
 /* pagination */
 
-.pagination {
+.dash-card--groups .pagination {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
     padding-top: 1rem;
-    border-top: 1px solid #D9D9D9;
+    border-top: 1px solid var(--light-gray);
     font-size: .7rem;
 }
 
-.pagination-item-prev {
+.dash-card--groups .pagination-item-prev {
     width: 10px;
     height: 10px;
     background: inherit;
     transform: rotate(45deg);
-    border-bottom: 2px solid #D9D9D9;
-    border-left: 2px solid #D9D9D9;
-
+    border-bottom: 2px solid var(--light-gray);
+    border-left: 2px solid var(--light-gray);
 }
-.numbers {
+.dash-card--groups .numbers {
     display: flex;
     flex-grow: 1;
     justify-content: center;
     align-items: center;
     gap: .5rem;
 }
-.active {
-    background:#3F729B;
+.dash-card--groups .active {
+    background: var(--navy);
     color: var(--white);
     width: 16px;
     height: 16px;
@@ -206,12 +210,94 @@
     align-items: center;
     border-radius: 999px;
 }
-
-.pagination-item-next {
+.dash-card--groups .pagination-item-next {
     width: 10px;
     height: 10px;
     background: inherit;
     transform: rotate(45deg);
-    border-top: 2px solid #D9D9D9;
-    border-right: 2px solid #D9D9D9;
+    border-top: 2px solid var(--light-gray);
+    border-right: 2px solid var(--light-gray);
+}
+
+
+
+/* members */
+.dash-card--groups .group__breadcrumbs {
+    font-size: .7rem;
+}
+.dash-card--groups .group-profile-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dash-card--groups .group-profile-btn .button,
+.dash-card--groups .group-profile-btn .button:hover {
+    background: var(--green);
+    border-radius: 8px;
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 16px;
+    padding: 12px 20px;
+    margin-bottom: 2rem;
+}
+.dash-card--groups .member {
+    border-left: var(--left-border);
+    margin: 8px 0;
+    padding: 0 0 0 12px;
+    display: flex;
+}
+
+.dash-card--groups .member .text {
+    flex-grow: 1;
+}
+.dash-card--groups .member .button {
+    background-color: var(--green);
+    color: var(--white);
+    font-weight: bold;
+}
+
+.dash-card--groups .group__church-health,
+.dash-card--groups .group__members h3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+.dash-card--groups .group__church-health h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    color: #373737;
+    margin-bottom: 2rem;
+}
+.dash-card--groups .member__role {
+    text-transform: capitalize;
+}
+
+
+
+
+/* search results */
+.dash-card--groups .search-container .result-count {
+    font-family: 'Poppins';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    background: var(--green);
+    padding: 12px;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.dash-card--groups .search-container .group {
+    border-color: var(--green);
 }
