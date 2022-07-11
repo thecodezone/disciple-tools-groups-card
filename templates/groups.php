@@ -2,9 +2,14 @@
 <template x-data="groups_card_listing"
           x-if="!store.group">
     <div id="listing">
-        <?php include( 'search.php' ); ?>
+
         <?php include( 'leader-filter.php' ); ?>
-        <?php include( 'coach.php' ); ?>
+
+        <div class="coach">
+            <span><?php echo esc_html($groups_label) . ' for' ?></span>
+            <h2 x-text="store.coach.name"></h2>
+        </div>
+
 
         <div class="groups">
             <template x-if="store.hasSearched">

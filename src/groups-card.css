@@ -66,6 +66,7 @@
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
+
 .dash-card--groups .card-body .coach span {
     text-transform: uppercase;
     font-size: 10px;
@@ -148,7 +149,6 @@
 }
 
 .dash-card--groups .member__name,
-.dash-card--groups .group__title,
 .dash-card--groups .group h3 {
     font-family: 'Poppins';
     font-style: normal;
@@ -278,6 +278,12 @@
 }
 .dash-card--groups .member__role {
     text-transform: capitalize;
+}
+
+.dash-card--groups .group__title {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
 }
 
 

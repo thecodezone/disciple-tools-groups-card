@@ -2,7 +2,6 @@
 <template x-if="store.group">
     <div id="group" x-data="groups_card_group">
         <?php include( 'search.php' ); ?>
-        <?php include( 'coach.php' ); ?>
 
         <div class="group__breadcrumbs breadcrumbs">
             <a x-on:click.prevent="store.goToListing"><?php echo esc_html($groups_label); ?></a> > <a x-text="store.group.post_title"></a>
@@ -15,8 +14,8 @@
                  x-text="store.group.location_grid[0].label"></div>
         </template>
 
-        <h3 class="group__title"
-            x-text="store.group.post_title"></h3>
+        <h2 class="group__title"
+            x-text="store.group.post_title"></h2>
         <hr/>
 
         <div class="group-profile-btn">
