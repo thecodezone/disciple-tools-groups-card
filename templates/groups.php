@@ -7,6 +7,12 @@
         <?php include( 'coach.php' ); ?>
 
         <div class="groups">
+            <template x-if="store.hasSearched">
+                <div class="result-count">
+                    <span x-text="store.numResults"></span> <?php echo _e('Results Returned', 'disciple_tools_groups_card'); ?>
+                </div>
+            </template>
+
             <template x-for="group in store.groups.posts"
                       :key="group.ID">
                 <div class="group"
@@ -24,27 +30,28 @@
                 </div>
             </template>
 
-            <div class="pagination">
-                <div class="pagination-item pagination-item-prev"
-                     x-on:click="store.prev()">
-                </div>
+            <template x-if="store.groups.total">
+                <div class="pagination">
+                    <div class="pagination-item pagination-item-prev"
+                         x-on:click="store.prev()">
+                    </div>
 
-                <div class="numbers">
-                    <template x-for="i in store.pages"
-                              :key="i">
-                        <template x-if="i > store.page - 3 && i < store.page + 3">
+                    <div class="numbers">
+                        <template x-for="i in store.pages"
+                                  :key="i">
+                            <template x-if="i > store.page - 3 && i < store.page + 3">
                              <span x-text="i"
                                    x-on:click="store.setPage(i)"
                                    :class="{'pagination-item': true, number: true, active: i === store.page}"></span>
+                            </template>
                         </template>
-                    </template>
-                </div>
+                    </div>
 
-                <div class="pagination-item pagination-item-next"
-                     x-on:click="store.next()">
+                    <div class="pagination-item pagination-item-next"
+                         x-on:click="store.next()">
+                    </div>
                 </div>
-            </div>
-
+            </template>
         </div>
     </div>
 </template>

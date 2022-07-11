@@ -24,6 +24,12 @@ document.addEventListener('alpine:init', () => {
     get pages() {
       return Math.ceil(this.groups.total / this.perPage)
     },
+    get hasSearched() {
+      return this.numResults !== null
+    },
+    get hasResults() {
+      return this.numResults > 0
+    },
     setGroup(group) {
       $store.group = group;
     },

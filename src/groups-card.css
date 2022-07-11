@@ -166,7 +166,7 @@
     font-weight: 400;
     font-size: 10px;
     line-height: 16px;
-    letter-spacing: -0.02em; 
+    letter-spacing: -0.02em;
     color: rgba(0, 0, 0, 0.4);
 }
 .dash-card--groups #group .group__church-health .health-item {
@@ -284,7 +284,7 @@
 
 
 /* search results */
-.dash-card--groups .search-container .result-count {
+.dash-card--groups .result-count {
     font-family: 'Poppins';
     font-style: italic;
     font-weight: 400;
