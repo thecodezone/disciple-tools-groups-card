@@ -58,7 +58,7 @@
 
 
 /* Coach */
-.dash-card--groups .card-body .coach {
+.dash-card--groups .card-body .filtering-by-contact {
     text-align: center;
     font-family: 'Poppins';
     font-style: normal;
@@ -67,14 +67,14 @@
     margin-bottom: 2rem;
 }
 
-.dash-card--groups .card-body .coach span {
+.dash-card--groups .card-body .filtering-by-contact span {
     text-transform: uppercase;
     font-size: 10px;
     line-height: 16px;
     letter-spacing: 0.2em;
     color: rgba(0, 0, 0, 0.3);
 }
-.dash-card--groups .card-body .coach h2 {
+.dash-card--groups .card-body .filtering-by-contact h2 {
     font-family: 'Poppins';
     font-weight: 700;
     font-size: 28px;

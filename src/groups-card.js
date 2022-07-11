@@ -12,9 +12,7 @@ document.addEventListener('alpine:init', () => {
     total: 0,
     text: '',
     group: null,
-    coach: null,
     card: null,
-    leader: null,
     user: null,
     error: null,
     numResults: null,
@@ -52,7 +50,12 @@ document.addEventListener('alpine:init', () => {
     goToListing: () => {
       $store.group = null;
     },
-    fetchGroups() {
+    reset: () => {
+      $store.group = null
+      $store.offset = 0
+      $store.total = 0
+    },
+    async fetchGroups() {
       $store.error = null
       $store.numResults = null
       let data = {}
@@ -68,13 +71,13 @@ document.addEventListener('alpine:init', () => {
       }
 
       //Are we fetching for a specific leader?
-      if ($store.leader) {
-        data.assigned_to = [toString(this.leader.ID)]
+      if ($store.user) {
+        data.assigned_to = [$store.user.ID]
       }
 
       //Fetch the groups
       $.ajax({
-        url: `${ wpApiDashboard.site_url }/wp-json/dt-posts/v2/groups`,
+        url: `${wpApiDashboard.site_url}/wp-json/dt-posts/v2/groups`,
         data,
         headers: {
           'X-WP-Nonce': wpApiDashboard.nonce //Grab the nonce out of the global object provided by the dashboard plugin
@@ -87,11 +90,16 @@ document.addEventListener('alpine:init', () => {
         }
 
         //We only want to display 6 groups
-        response.posts = response.posts.slice(0,$store.perPage)
+        response.posts = response.posts.slice(0, $store.perPage)
 
         $store.groups = response
         $store.numResults = response.total
+      }).fail(() => {
+        $store.error = 'An error occurred'
+        return Promise.reject()
       })
+
+      return Promise.resolve()
     }
   })
   $store = Alpine.store('groupsCard');
@@ -99,11 +107,10 @@ document.addEventListener('alpine:init', () => {
   /**
    * The groups card component
    */
-  Alpine.data('groups_card', ({groups, coach, card, user}) => {
+  Alpine.data('groups_card', ({groups, card, user}) => {
 
     //Hydrate the store on init
     $store.groups = groups
-    $store.coach = coach
     $store.card = card
     $store.user = user
 
@@ -111,7 +118,7 @@ document.addEventListener('alpine:init', () => {
       store: $store,
       init() {
         //When the leader updates, fetch new groups
-        this.$watch('store.leader', () => $store.fetchGroups())
+        this.$watch('store.user', () => $store.fetchGroups())
       },
     }
   })
@@ -229,7 +236,7 @@ document.addEventListener('alpine:init', () => {
        */
       init() {
         initChurchHealthCircle(this.store.group)
-      }
+      },
     }
   })
 
@@ -240,6 +247,7 @@ document.addEventListener('alpine:init', () => {
     return {
       store: $store,
       search() {
+        $store.reset()
         $store.fetchGroups($store.text)
       }
     }
@@ -253,26 +261,32 @@ document.addEventListener('alpine:init', () => {
       store: $store,
       init() {
 
-        //Use JQUERY typeahead to autocomplete the leader filter
+        //Use JQUERY typeahead to autocomplete the user filter
         $.typeahead({
           input: this.$refs.filter_field,
           minLength: 0,
           accent: true,
           searchOnFocus: true,
-          source: TYPEAHEADS.typeaheadContactsSource(),
+          source: TYPEAHEADS.typeaheadUserSource(),
           templateValue: "{{name}}",
-          template: window.TYPEAHEADS.contactListRowTemplate,
+          template: function (query, item) {
+            return `<span class="row">
+          <span class="avatar"><img src="{{avatar}}"/> </span>
+          <span>${window.lodash.escape(item.name)}</span>
+        </span>`
+          },
           dynamic: true,
           hint: true,
           emptyTemplate: window.lodash.escape(window.wpApiShare.translations.no_records_found),
           callback: {
             onSearch: function (node, search) {
-                if (!search) {
-                  $store.leader = null
-                }
+              if (!search) {
+                $store.user = null
+              }
             },
             onClick: function (node, a, item) {
-              $store.leader = item
+              $store.reset()
+              $store.user = item
             }
           },
         });

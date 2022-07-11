@@ -5,7 +5,7 @@
                         <input x-ref="filter_field"
                                class="input-height"
                                name="leader_filter"
-                               placeholder="<?php echo esc_html_x( "Filter by ", 'input field placeholder', 'disciple_tools_groups_card' ) . esc_html($leaders_label);  ?>"
+                               placeholder="<?php echo esc_html_x( "Filter by ", 'input field placeholder', 'disciple_tools_groups_card' ) . esc_html($user_label);  ?>"
                                autocomplete="off">
                      </span>
     </div>

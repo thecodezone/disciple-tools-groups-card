@@ -42,12 +42,14 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
 
         //Post type labels
         $group_label = DT_Posts::get_label_for_post_type( 'groups', true );
+        $user_label = DT_Posts::get_label_for_post_type('users', true);
         $groups_label = DT_Posts::get_label_for_post_type( 'groups' );
         $leaders_label = DT_Posts::get_post_field_settings( 'groups' )['leaders']['name'];
 
-        //Assume the current user's contact is the coach at load
-        $user = wp_get_current_user();
-        $coach = DT_Posts::get_post( 'contacts', Disciple_Tools_Users::get_contact_for_user( $user->ID ) );
+        $user = [
+            'ID' => get_current_user_id(),
+            'name' => dt_get_user_display_name( get_current_user_id() ),
+        ];
         $leader_label = DT_Posts::get_post_field_settings( 'groups' )['leaders']['name'];
 
         //The card data

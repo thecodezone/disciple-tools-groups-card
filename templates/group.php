@@ -29,7 +29,10 @@
 
         <template x-if="rosterPaginated && rosterPaginated.length">
             <div class="group__members">
-                <h3><?php _e('Members', 'disciple_tools_groups_card' ) ?></h3>
+                <h3 class="help-button-tile"
+                    data-title="<?php echo esc_html(__('Members', 'disciple_tools_groups_card')); ?>"
+
+                ><?php _e('Members', 'disciple_tools_groups_card' ) ?></h3>
                 <template x-for="member in rosterPaginated"
                           :key="member.ID">
                     <div class="member">

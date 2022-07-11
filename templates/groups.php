@@ -3,11 +3,12 @@
           x-if="!store.group">
     <div id="listing">
 
-        <?php include( 'leader-filter.php' ); ?>
+        <?php include( 'search.php' ); ?>
+        <?php include( 'user-filter.php' ); ?>
 
-        <div class="coach">
+        <div class="filtering-by-contact">
             <span><?php echo esc_html($groups_label) . ' for' ?></span>
-            <h2 x-text="store.coach.name"></h2>
+            <h2 x-text="store.user.name"></h2>
         </div>
 
 

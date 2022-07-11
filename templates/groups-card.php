@@ -2,7 +2,6 @@
 $props = wp_json_encode( [
     'user' => $user,
     'groups' => $groups,
-    'coach'  => $coach,
     'card'   => $card,
 ], JSON_HEX_APOS );
 ?>
