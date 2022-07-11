@@ -9,6 +9,7 @@ document.addEventListener('alpine:init', () => {
     groups: [],
     offset: 0,
     perPage: 6,
+    total: 0,
     text: '',
     group: null,
     coach: null,
@@ -19,12 +20,14 @@ document.addEventListener('alpine:init', () => {
     get page() {
       return Math.floor(this.offset / this.perPage) + 1
     },
+    get pages() {
+      return Math.ceil(this.groups.total / this.perPage)
+    },
     setGroup(group) {
       $store.group = group;
     },
     next() {
       if ($store.offset + $store.perPage < $store.groups.total) {
-        console.log('here')
         $store.offset += $store.perPage;
         this.fetchGroups()
       }
@@ -35,7 +38,7 @@ document.addEventListener('alpine:init', () => {
         this.fetchGroups()
       }
     },
-    goTOPage(page) {
+    setPage(page) {
       $store.offset = (page - 1) * $store.perPage;
       this.fetchGroups()
     },

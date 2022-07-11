@@ -16,7 +16,8 @@
                         <!-- TO GET THE LOCATION SHOW UP, YOU NEED TO SET A LOCATION IN THE GROUP SETTINGS -->
                         <template x-if="group?.location_grid && group.location_grid.length">
                             <p class="location"
-                               x-text="group.location_grid[0].label"></p>
+                               x-text="group.location_grid[0].label"
+                            ></p>
                         </template>
                     </div>
                     <span class="fi-info"></span>
@@ -24,17 +25,22 @@
             </template>
 
             <div class="pagination">
-                <div class="pagination-item-prev"
+                <div class="pagination-item pagination-item-prev"
                      x-on:click="store.prev()">
                 </div>
 
                 <div class="numbers">
-                    <span class="active">1</span>
-                    <span>2</span>
-                    <span>3</span>
+                    <template x-for="i in store.pages"
+                              :key="i">
+                        <template x-if="i > store.page - 3 && i < store.page + 3">
+                             <span x-text="i"
+                                   x-on:click="store.setPage(i)"
+                                   :class="{'pagination-item': true, number: true, active: i === store.page}"></span>
+                        </template>
+                    </template>
                 </div>
 
-                <div class="pagination-item-next"
+                <div class="pagination-item pagination-item-next"
                      x-on:click="store.next()">
                 </div>
             </div>
