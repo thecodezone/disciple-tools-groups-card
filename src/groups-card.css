@@ -65,6 +65,7 @@
     font-weight: 700;
     margin-top: 1rem;
     margin-bottom: 2rem;
+    text-overflow: ellipsis;
 }
 
 .dash-card--groups .card-body .coach span {
@@ -153,6 +154,7 @@ li.typeahead__item.typeahead__group-contacts > a > span > span{
     letter-spacing: -0.02em;
     color: rgba(0, 0, 0, 0.7);
     margin: 0;
+    text-overflow: ellipsis;
 }
 .dash-card--groups .member__role,
 .dash-card--groups .group__location,
