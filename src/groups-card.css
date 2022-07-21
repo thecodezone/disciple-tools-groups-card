@@ -33,6 +33,7 @@
 }
 
 .dash-card--groups .card-header .add-group {
+    color: white;
     align-items: center;
     background-color: var(--green);
     border-radius: 999px;
