@@ -1,4 +1,5 @@
 let $store = null;
+let $initalUser = null;
 
 document.addEventListener('alpine:init', () => {
   /**
@@ -285,7 +286,7 @@ document.addEventListener('alpine:init', () => {
             },
             onClick: function (node, a, item) {
               $store.reset()
-              $store.user = item
+              $store.user = item ? item : $initalUser
             }
           },
         });

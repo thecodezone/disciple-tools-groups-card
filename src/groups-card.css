@@ -210,20 +210,36 @@ li.typeahead__item.typeahead__group-contacts > a > span > span{
     font-size: .7rem;
 }
 
-.dash-card--groups .pagination .pagination-item-prev {
+.dash-card--groups .pagination .pagination-item-prev,
+.dash-card--groups .pagination .pagination-item-next {
     width: 10px;
     height: 10px;
     background: inherit;
     transform: rotate(45deg);
+    cursor: pointer;
+    padding: 2px;
+}
+
+.dash-card--groups .pagination .pagination-item-prev {
     border-bottom: 2px solid var(--light-gray);
     border-left: 2px solid var(--light-gray);
+    transform: rotate(45deg) translateX(2px);
 }
+
+.dash-card--groups .pagination .pagination-item-next {
+    border-top: 2px solid var(--light-gray);
+    border-right: 2px solid var(--light-gray);
+    transform: rotate(45deg) translateX(-2px);
+}
+
 .dash-card--groups .pagination .numbers {
     display: flex;
     flex-grow: 1;
     justify-content: center;
     align-items: center;
     gap: .5rem;
+    cursor: pointer;
+    line-height: 8px;
 }
 .dash-card--groups .pagination .active {
     background: var(--navy);
@@ -234,14 +250,6 @@ li.typeahead__item.typeahead__group-contacts > a > span > span{
     justify-content: center;
     align-items: center;
     border-radius: 999px;
-}
-.dash-card--groups .pagination .pagination-item-next {
-    width: 10px;
-    height: 10px;
-    background: inherit;
-    transform: rotate(45deg);
-    border-top: 2px solid var(--light-gray);
-    border-right: 2px solid var(--light-gray);
 }
 
 
@@ -270,17 +278,21 @@ li.typeahead__item.typeahead__group-contacts > a > span > span{
 .dash-card--groups .member {
     border-left: var(--left-border);
     margin: 8px 0;
-    padding: 0 0 0 12px;
     display: flex;
 }
 
 .dash-card--groups .member .text {
+    padding: 0 12px;
     flex-grow: 1;
 }
 .dash-card--groups .member .button {
     background-color: var(--green);
     color: var(--white);
     font-weight: bold;
+}
+
+.dash-card--groups .group__members {
+    overflow: hidden;
 }
 
 .dash-card--groups .group__church-health,
