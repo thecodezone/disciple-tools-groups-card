@@ -114,6 +114,7 @@ document.addEventListener('alpine:init', () => {
     $store.groups = groups
     $store.card = card
     $store.user = user
+    $initalUser = user
 
     return {
       store: $store,
@@ -281,7 +282,7 @@ document.addEventListener('alpine:init', () => {
           callback: {
             onSearch: function (node, search) {
               if (!search) {
-                $store.user = null
+                $store.user = $initalUser
               }
             },
             onClick: function (node, a, item) {
