@@ -271,7 +271,6 @@ document.addEventListener('alpine:init', () => {
           templateValue: "{{name}}",
           template: function (query, item) {
             return `<span class="row">
-          <span class="avatar"><img src="{{avatar}}"/> </span>
           <span>${window.lodash.escape(item.name)}</span>
         </span>`
           },
