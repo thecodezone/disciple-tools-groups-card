@@ -145,6 +145,10 @@ li.typeahead__item.typeahead__group-contacts > a > span > span{
 }
 
 /* groups */
+.dash-card--groups .groups {
+    overflow: hidden;
+}
+
 .dash-card--groups .group {
     border-left: var(--left-border);
     margin: 8px 0;
