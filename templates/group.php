@@ -7,16 +7,15 @@
             <a x-on:click.prevent="store.goToListing"><?php echo esc_html($groups_label); ?></a> > <a x-text="store.group.post_title"></a>
         </div>
 
-        <hr/>
+        <div class="group__heading">
+            <template x-if="store.group.location_grid && store.group.location_grid.length">
+                <div class="group__location location"
+                     x-text="store.group.location_grid[0].label"></div>
+            </template>
 
-        <template x-if="store.group.location_grid && store.group.location_grid.length">
-            <div class="group__location location"
-                 x-text="store.group.location_grid[0].label"></div>
-        </template>
-
-        <h2 class="group__title"
-            x-text="store.group.post_title"></h2>
-        <hr/>
+            <h2 class="group__title"
+                x-text="store.group.post_title"></h2>
+        </div>
 
         <div class="group-profile-btn">
             <a class="button"
@@ -41,10 +40,13 @@
                             <p x-text="member.role" class="member__role"></p>
 
                         </div>
-                        <a class="button"
-                            :href="store.member.permalink">
+                        <div class="member__button">
+                            <a class="button"
+                               :href="store.member.permalink">
                                 <?php _e( 'View Profile', 'disciple_tools_groups_card' ) ?>
                             </a>
+                        </div>
+
                     </div>
                 </template>
 

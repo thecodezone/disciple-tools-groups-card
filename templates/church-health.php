@@ -12,7 +12,7 @@ if ( empty( $group_preferences['church_metrics'] ) ) {
     <h3><?php echo esc_html( $group_label ) . __( ' Health', 'disciple_tools_groups_card' ); ?></h3>
 
     <div class="grid-x">
-        <div style="margin-right:auto; margin-left:auto;min-height:302px">
+        <div style="margin-right:auto; margin-left:auto;min-height:225px">
             <div class="health-circle"
                  id="health-items-container">
                 <div class="health-grid">
