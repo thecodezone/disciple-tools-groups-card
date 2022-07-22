@@ -10,7 +10,7 @@
                    placeholder="Search..."
                    x-model="store.text"
                    name="search">
-            <button type="submit"><?php echo _e('Search', 'disciple_tools_groups_card'); ?></button>
+            <button type="submit"><?php esc_html_e( 'Search', 'disciple_tools_groups_card' ); ?></button>
         </div>
     </form>
 </div>

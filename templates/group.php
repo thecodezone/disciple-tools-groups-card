@@ -1,10 +1,12 @@
 <!-- THE GROUP VIEW -->
 <template x-if="store.group">
-    <div id="group" x-data="groups_card_group">
+    <div id="group"
+         x-data="groups_card_group">
         <?php include( 'search.php' ); ?>
 
         <div class="group__breadcrumbs breadcrumbs">
-            <a x-on:click.prevent="store.goToListing"><?php echo esc_html($groups_label); ?></a> > <a x-text="store.group.post_title"></a>
+            <a x-on:click.prevent="store.goToListing"><?php echo esc_html( $groups_label ); ?></a> >
+            <a x-text="store.group.post_title"></a>
         </div>
 
         <div class="group__heading">
@@ -19,8 +21,8 @@
 
         <div class="group-profile-btn">
             <a class="button"
-            :href="store.group.permalink">
-                <?php echo __( 'View ', 'disciple_tools_groups_card') . esc_html($group_label) . __(' Profile', 'disciple_tools_groups_card' ) ?>
+               :href="store.group.permalink">
+                <?php echo esc_html( __( 'View ', 'disciple_tools_groups_card' ) . $group_label . __( ' Profile', 'disciple_tools_groups_card' ) ) ?>
             </a>
         </div>
 
@@ -29,21 +31,23 @@
         <template x-if="rosterPaginated && rosterPaginated.length">
             <div class="group__members">
                 <h3 class="help-button-tile"
-                    data-title="<?php echo esc_html(__('Members', 'disciple_tools_groups_card')); ?>"
+                    data-title="<?php esc_html_e( 'Members', 'disciple_tools_groups_card' ) ?>"
 
-                ><?php _e('Members', 'disciple_tools_groups_card' ) ?></h3>
+                ><?php esc_html_e( 'Members', 'disciple_tools_groups_card' ) ?></h3>
                 <template x-for="member in rosterPaginated"
                           :key="member.ID">
                     <div class="member">
                         <div class="text">
-                            <h4 x-text="member.post_title" class="member__name"></h4>
-                            <p x-text="member.role" class="member__role"></p>
+                            <h4 x-text="member.post_title"
+                                class="member__name"></h4>
+                            <p x-text="member.role"
+                               class="member__role"></p>
 
                         </div>
                         <div class="member__button">
                             <a class="button"
-                               :href="store.member.permalink">
-                                <?php _e( 'View Profile', 'disciple_tools_groups_card' ) ?>
+                               :href="member.permalink">
+                                <?php esc_html_e( 'View Profile', 'disciple_tools_groups_card' ) ?>
                             </a>
                         </div>
 

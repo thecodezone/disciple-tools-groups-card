@@ -16,9 +16,9 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
     public function setup() {
         wp_enqueue_script( 'alpine.js', 'https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js', [], '3.10.2', true );
         wp_enqueue_script( 'groups-card-health-circle', plugin_dir_url( __FILE__ ) . '../src/health-circle.js', [], filemtime( plugin_dir_path( __FILE__ ) . '../src/health-circle.js' ) );
-        wp_localize_script( 'groups-card-health-circle', 'churchHealthSettings', array(
-            'post_settings' => DT_Posts::get_post_settings( 'groups'),
-        ) );
+        wp_localize_script( 'groups-card-health-circle', 'churchHealthSettings', [
+            'post_settings' => DT_Posts::get_post_settings( 'groups' ),
+        ] );
         wp_enqueue_script( 'groups-card', plugin_dir_url( __FILE__ ) . '../src/groups-card.js', [ 'alpine.js', 'groups-card-health-circle' ], filemtime( plugin_dir_path( __FILE__ ) . '../src/groups-card.js' ) );
         wp_enqueue_style( 'groups-card', plugin_dir_url( __FILE__ ) . '../src/groups-card.css', [], filemtime( plugin_dir_path( __FILE__ ) . '../src/groups-card.css' ) );
     }
@@ -37,17 +37,17 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
      */
     public function render() {
         //We only want to list 6 groups.
-        $groups = DT_Posts::list_posts( 'groups', [], true);
+        $groups = DT_Posts::list_posts( 'groups', [], true );
         $groups['posts'] = array_slice( $groups['posts'], 0, 6 );
 
         //Post type labels
         $group_label = DT_Posts::get_label_for_post_type( 'groups', true );
-        $user_label = DT_Posts::get_label_for_post_type('users', true);
+        $user_label = DT_Posts::get_label_for_post_type( 'users', true );
         $groups_label = DT_Posts::get_label_for_post_type( 'groups' );
         $leaders_label = DT_Posts::get_post_field_settings( 'groups' )['leaders']['name'];
 
         $user = [
-            'ID' => get_current_user_id(),
+            'ID'   => get_current_user_id(),
             'name' => dt_get_user_display_name( get_current_user_id() ),
         ];
         $leader_label = DT_Posts::get_post_field_settings( 'groups' )['leaders']['name'];
@@ -61,12 +61,6 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
 
 if ( current_user_can( 'access_groups' ) ) {
     DT_Dashboard_Plugin_Cards::instance()->register(
-        new DT_Groups_Dashboard_Card(
-            'groups',
-            __( 'Groups', 'disciple-tools-groups-card' ),
-            [
-                'priority' => 1,
-                'span'     => 1
-            ]
-        ) );
+        new DT_Groups_Dashboard_Card( 'groups', __( 'Groups', 'disciple-tools-groups-card' ), [ 'priority' => 1, 'span' => 1 ] )
+    );
 }

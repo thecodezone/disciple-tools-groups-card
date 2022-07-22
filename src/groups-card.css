@@ -224,6 +224,7 @@ li.typeahead__item.typeahead__group-contacts > a > span > span{
     flex-grow: 1;
 }
 .dash-card--groups .group .fi-info {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -333,6 +334,7 @@ li.typeahead__item.typeahead__group-contacts > a > span > span{
 }
 .dash-card--groups .group-profile-btn .button,
 .dash-card--groups .group-profile-btn .button:hover {
+    cursor: pointer;
     background: var(--green);
     border-radius: 8px;
     color: var(--white);

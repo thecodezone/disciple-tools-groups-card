@@ -7,7 +7,7 @@
         <?php include( 'user-filter.php' ); ?>
 
         <div class="filtering-by-contact">
-            <span><?php echo esc_html($groups_label) . ' for' ?></span>
+            <span><?php echo esc_html( $groups_label ) . ' for' ?></span>
             <h2 x-text="store.user.name"></h2>
         </div>
 
@@ -15,7 +15,7 @@
         <div class="groups">
             <template x-if="store.hasSearched">
                 <div class="result-count">
-                    <span x-text="store.numResults"></span> <?php echo _e('Results Returned', 'disciple_tools_groups_card'); ?>
+                    <span x-text="store.numResults"></span> <?php echo esc_html( 'Results Returned', 'disciple_tools_groups_card' ); ?>
                 </div>
             </template>
 

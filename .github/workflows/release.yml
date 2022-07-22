@@ -20,7 +20,7 @@ jobs:
       - name: Build project
         run: |
           mkdir disciple-tools-groups-card
-          cp -r disciple-tools-groups-card.php languages rest-api site-link tile workflows spinner.svg version-control.json LICENSE SECURITY.md disciple-tools-groups-card/
+          cp -r disciple-tools-groups-card.php dashboard languages src templates spinner.svg version-control.json LICENSE SECURITY.md disciple-tools-groups-card/
           zip -r disciple-tools-groups-card.zip disciple-tools-groups-card
       - name: Create Release
         id: create_release
