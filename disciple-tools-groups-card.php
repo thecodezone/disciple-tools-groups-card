@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Disciple.Tools - Groups Card
  * Plugin URI: https://github.com/thecodezone/disciple-tools-groups-card
- * Description: Disciple.Tools - Groups Card is intended to help developers and integrator jumpstart their extension of the Disciple.Tools system.
+ * Description: This is a simple plugin that adds a group card to the Disciple.Tools dashboard. It provides a simple way to search groups, filter groups by user, and view a group’s info and health.
  * Text Domain: disciple-tools-groups-card
  * Domain Path: /languages
  * Version:  0.1

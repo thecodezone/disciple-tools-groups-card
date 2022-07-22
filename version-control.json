@@ -23,7 +23,7 @@
   },
   "icon": "https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-card/master/documentation/icon.png",
   "sections": {
-    "description": "This is a simple plugin that adds a group dashboard card to the Disciple.Tools dashboard. It provides a simple way to search groups, filter groups by user, and view a group's info and health at-a-glance.",
+    "description": "This is a simple plugin that adds a group card to the Disciple.Tools dashboard. It provides a simple way to search groups, filter groups by user, and view a group’s info and health.",
     "installation": "(Required) You must have Disciple.Tools Theme installed before using this plugin. Once Disciple.Tools is installed, you can use the normal Plugin system to install the plugin.",
     "changelog": ""
   }

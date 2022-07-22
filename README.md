@@ -6,7 +6,7 @@
 
 # Disciple.Tools - Groups Card
 
-This is a simple plugin that adds a group dashboard card to the Disciple.Tools dashboard. It provides a simple way to search groups, filter groups by user, and view a group's info and health at-a-glance.
+This is a simple plugin that adds a group card to the Disciple.Tools dashboard. It provides a simple way to search groups, filter groups by user, and view a group’s info and health.
 
 ## Requirements
 
