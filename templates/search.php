@@ -1,5 +1,5 @@
 <div class="search__container"
-     x-data="groups_card_search">
+     x-data="groups_tile_search">
     <form x-on:submit.prevent="search">
         <div class="search__input-group input-group">
           <span class="search__input-label input-group-label">
@@ -10,7 +10,7 @@
                    placeholder="Search..."
                    x-model="store.text"
                    name="search">
-            <button type="submit"><?php esc_html_e( 'Search', 'disciple_tools_groups_card' ); ?></button>
+            <button type="submit"><?php esc_html_e( 'Search', 'disciple_tools_groups_tile' ); ?></button>
         </div>
     </form>
 </div>

@@ -1,5 +1,5 @@
 <div class="typeahead__container"
-     x-data="groups_card_leader_filter">
+     x-data="groups_tile_leader_filter">
     <div class="typeahead__field">
                     <span class="typeahead__query">
                         <div class="typeahead__input-group input-group">
@@ -9,7 +9,7 @@
                               <input x-ref="filter_field"
                                      class="typeahead__input input-height"
                                      name="leader_filter"
-                                     placeholder="<?php echo esc_html_x( "Filter by ", 'input field placeholder', 'disciple_tools_groups_card' ) . esc_html( $user_label ); ?>"
+                                     placeholder="<?php echo esc_html_x( "Filter by ", 'input field placeholder', 'disciple_tools_groups_tile' ) . esc_html( $user_label ); ?>"
                                      autocomplete="off">
                         </div>
                      </span>

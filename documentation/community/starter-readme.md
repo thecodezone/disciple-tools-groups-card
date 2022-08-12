@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.com/DiscipleTools/disciple-tools-groups-card.svg?branch=master)](https://travis-ci.com/DiscipleTools/disciple-tools-groups-card)
+[![Build Status](https://travis-ci.com/DiscipleTools/disciple-tools-groups-tile.svg?branch=master)](https://travis-ci.com/DiscipleTools/disciple-tools-groups-tile)
 
-# Disciple.Tools - Groups Card
+# Disciple.Tools - Groups Tile
 
 __Kick start your Disciple.Tools plugin project with this template!__
 
@@ -30,7 +30,7 @@ __This plugin is for developers__ who want to extend the Disciple.Tools system f
  1. Wordpress code style requirements. ```phpcs.xml```
  1. PHP Code Sniffer support (composer) @use ```/vendor/bin/phpcs``` and ```/vendor/bin/phpcbf```
  1. Travis Continuous Integration ([travis-ci.com](https://travis-ci.com)). ```travis.yml```
- 1. Disciple.Tools Theme presence check. ```disciple_tools_groups_card()```
+ 1. Disciple.Tools Theme presence check. ```disciple_tools_groups_tile()```
  1. Remote upgrade system for ongoing updates outside the Wordpress Directory.
  1. Multilingual support. ```/languages``` & ```default.pot```
 
@@ -51,11 +51,11 @@ __This plugin is for developers__ who want to extend the Disciple.Tools system f
 ## Contribution
 
 Contributions welcome. You can report issues and bugs in the
-[Issues](https://github.com/DiscipleTools/disciple-tools-groups-card/issues) section of the repo. You can present ideas
-in the [Discussions](https://github.com/DiscipleTools/disciple-tools-groups-card/discussions) section of the repo. And
-code contributions are welcome using the [Pull Request](https://github.com/DiscipleTools/disciple-tools-groups-card/pulls)
+[Issues](https://github.com/DiscipleTools/disciple-tools-groups-tile/issues) section of the repo. You can present ideas
+in the [Discussions](https://github.com/DiscipleTools/disciple-tools-groups-tile/discussions) section of the repo. And
+code contributions are welcome using the [Pull Request](https://github.com/DiscipleTools/disciple-tools-groups-tile/pulls)
 system for git. For a more details on contribution see the
-[contribution guidelines](https://github.com/DiscipleTools/disciple-tools-groups-card/blob/master/CONTRIBUTING.md).
+[contribution guidelines](https://github.com/DiscipleTools/disciple-tools-groups-tile/blob/master/CONTRIBUTING.md).
 
 ## Screenshots
 

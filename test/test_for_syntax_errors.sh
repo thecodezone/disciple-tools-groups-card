@@ -3,7 +3,7 @@
 cd "$(dirname "${BASH_SOURCE[0]}")/../"
 
 if [ "$(php -r 'echo version_compare( phpversion(), "7.0", ">=" ) ? 1 : 0;')" != 1 ] ; then
-    php -l ../disciple-tools-groups-card.php
+    php -l ../disciple-tools-groups-tile.php
     exit
 fi
 

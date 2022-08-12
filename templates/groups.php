@@ -1,5 +1,5 @@
 <!-- THE GROUP LISTING VIEW -->
-<template x-data="groups_card_listing"
+<template x-data="groups_tile_listing"
           x-if="!store.group">
     <div id="listing">
 
@@ -15,7 +15,7 @@
         <div class="groups">
             <template x-if="store.hasSearched">
                 <div class="result-count">
-                    <span x-text="store.numResults"></span> <?php echo esc_html( 'Results Returned', 'disciple_tools_groups_card' ); ?>
+                    <span x-text="store.numResults"></span> <?php echo esc_html( 'Results Returned', 'disciple_tools_groups_tile' ); ?>
                 </div>
             </template>
 

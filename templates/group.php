@@ -1,7 +1,7 @@
 <!-- THE GROUP VIEW -->
 <template x-if="store.group">
     <div id="group"
-         x-data="groups_card_group">
+         x-data="groups_tile_group">
         <?php include( 'search.php' ); ?>
 
         <div class="group__breadcrumbs breadcrumbs">
@@ -22,7 +22,7 @@
         <div class="group-profile-btn">
             <a class="button"
                :href="store.group.permalink">
-                <?php echo esc_html( __( 'View ', 'disciple_tools_groups_card' ) . $group_label . __( ' Profile', 'disciple_tools_groups_card' ) ) ?>
+                <?php echo esc_html( __( 'View ', 'disciple_tools_groups_tile' ) . $group_label . __( ' Profile', 'disciple_tools_groups_tile' ) ) ?>
             </a>
         </div>
 
@@ -31,9 +31,9 @@
         <template x-if="rosterPaginated && rosterPaginated.length">
             <div class="group__members">
                 <h3 class="help-button-tile"
-                    data-title="<?php esc_html_e( 'Members', 'disciple_tools_groups_card' ) ?>"
+                    data-title="<?php esc_html_e( 'Members', 'disciple_tools_groups_tile' ) ?>"
 
-                ><?php esc_html_e( 'Members', 'disciple_tools_groups_card' ) ?></h3>
+                ><?php esc_html_e( 'Members', 'disciple_tools_groups_tile' ) ?></h3>
                 <template x-for="member in rosterPaginated"
                           :key="member.ID">
                     <div class="member">
@@ -47,7 +47,7 @@
                         <div class="member__button">
                             <a class="button"
                                :href="member.permalink">
-                                <?php esc_html_e( 'View Profile', 'disciple_tools_groups_card' ) ?>
+                                <?php esc_html_e( 'View Profile', 'disciple_tools_groups_tile' ) ?>
                             </a>
                         </div>
 

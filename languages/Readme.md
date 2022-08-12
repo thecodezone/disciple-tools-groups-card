@@ -2,4 +2,4 @@
 {translation-domain}-{localisation}.po
 
 ex:
-disciple-tools-groups-card-fr_FR.po
+disciple-tools-groups-tile-fr_FR.po

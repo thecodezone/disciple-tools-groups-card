@@ -15,13 +15,13 @@ jobs:
 
       # - name: Run test suite
       #   run: composer run-script test
-      # cp -r disciple-tools-groups-card.php includes languages spinner.svg version-control.json LICENSE SECURITY.md disciple-tools-groups-card/
+      # cp -r disciple-tools-groups-tile.php includes languages spinner.svg version-control.json LICENSE SECURITY.md disciple-tools-groups-tile/
       # Below borrowed from https://github.com/actions/upload-release-asset
       - name: Build project
         run: |
-          mkdir disciple-tools-groups-card
-          cp -r disciple-tools-groups-card.php dashboard languages src templates spinner.svg version-control.json LICENSE SECURITY.md disciple-tools-groups-card/
-          zip -r disciple-tools-groups-card.zip disciple-tools-groups-card
+          mkdir disciple-tools-groups-tile
+          cp -r disciple-tools-groups-tile.php dashboard languages src templates spinner.svg version-control.json LICENSE SECURITY.md disciple-tools-groups-tile/
+          zip -r disciple-tools-groups-tile.zip disciple-tools-groups-tile
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -39,6 +39,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./disciple-tools-groups-card.zip
-          asset_name: disciple-tools-groups-card.zip
+          asset_path: ./disciple-tools-groups-tile.zip
+          asset_name: disciple-tools-groups-tile.zip
           asset_content_type: application/zip

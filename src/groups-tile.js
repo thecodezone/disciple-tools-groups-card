@@ -6,14 +6,14 @@ document.addEventListener('alpine:init', () => {
    * Create a data store to share data between components.
    */
   $store = null
-  Alpine.store('groupsCard', {
+  Alpine.store('groupsTile', {
     groups: [],
     offset: 0,
     perPage: 6,
     total: 0,
     text: '',
     group: null,
-    card: null,
+    tile: null,
     user: null,
     error: null,
     numResults: null,
@@ -103,16 +103,16 @@ document.addEventListener('alpine:init', () => {
       return Promise.resolve()
     }
   })
-  $store = Alpine.store('groupsCard');
+  $store = Alpine.store('groupsTile');
 
   /**
-   * The groups card component
+   * The groups tile component
    */
-  Alpine.data('groups_card', ({groups, card, user}) => {
+  Alpine.data('groups_tile', ({groups, tile, user}) => {
 
     //Hydrate the store on init
     $store.groups = groups
-    $store.card = card
+    $store.tile = tile
     $store.user = user
     $initalUser = user
 
@@ -126,18 +126,18 @@ document.addEventListener('alpine:init', () => {
   })
 
   /**
-   * The groups card listing view
+   * The groups tile listing view
    */
-  Alpine.data('groups_card_listing', () => {
+  Alpine.data('groups_tile_listing', () => {
     return {
       store: $store
     }
   })
 
   /**
-   * The groups card group view
+   * The groups tile group view
    */
-  Alpine.data('groups_card_group', () => {
+  Alpine.data('groups_tile_group', () => {
     return {
       perPage: 6,
       offset: 0,
@@ -243,9 +243,9 @@ document.addEventListener('alpine:init', () => {
   })
 
   /**
-   *  The groups card search component
+   *  The groups tile search component
    */
-  Alpine.data('groups_card_search', () => {
+  Alpine.data('groups_tile_search', () => {
     return {
       store: $store,
       search() {
@@ -258,7 +258,7 @@ document.addEventListener('alpine:init', () => {
   /**
    * The group leader filter typeahead component
    */
-  Alpine.data('groups_card_leader_filter', () => {
+  Alpine.data('groups_tile_leader_filter', () => {
     return {
       store: $store,
       init() {

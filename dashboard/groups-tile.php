@@ -1,26 +1,26 @@
 <?php
 
 /**
- * Your custom card class
+ * Your custom tile class
  */
-class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
+class DT_Groups_Dashboard_Tile extends DT_Dashboard_Tile {
     public function __construct( $handle, $label, $params = [] ) {
         parent::__construct( $handle, $label, $params );
         add_filter( 'script_loader_tag', [ $this, 'defer_alpine' ], 10, 3 );
     }
 
     /**
-     * Register any assets the card needs or do anything else needed on registration.
+     * Register any assets the tile needs or do anything else needed on registration.
      * @return mixed
      */
     public function setup() {
         wp_enqueue_script( 'alpine.js', 'https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js', [], '3.10.2', true );
-        wp_enqueue_script( 'groups-card-health-circle', plugin_dir_url( __FILE__ ) . '../src/health-circle.js', [], filemtime( plugin_dir_path( __FILE__ ) . '../src/health-circle.js' ) );
-        wp_localize_script( 'groups-card-health-circle', 'churchHealthSettings', [
+        wp_enqueue_script( 'groups-tile-health-circle', plugin_dir_url( __FILE__ ) . '../src/health-circle.js', [], filemtime( plugin_dir_path( __FILE__ ) . '../src/health-circle.js' ) );
+        wp_localize_script( 'groups-tile-health-circle', 'churchHealthSettings', [
             'post_settings' => DT_Posts::get_post_settings( 'groups' ),
         ] );
-        wp_enqueue_script( 'groups-card', plugin_dir_url( __FILE__ ) . '../src/groups-card.js', [ 'alpine.js', 'groups-card-health-circle' ], filemtime( plugin_dir_path( __FILE__ ) . '../src/groups-card.js' ) );
-        wp_enqueue_style( 'groups-card', plugin_dir_url( __FILE__ ) . '../src/groups-card.css', [], filemtime( plugin_dir_path( __FILE__ ) . '../src/groups-card.css' ) );
+        wp_enqueue_script( 'groups-tile', plugin_dir_url( __FILE__ ) . '../src/groups-tile.js', [ 'alpine.js', 'groups-tile-health-circle' ], filemtime( plugin_dir_path( __FILE__ ) . '../src/groups-tile.js' ) );
+        wp_enqueue_style( 'groups-tile', plugin_dir_url( __FILE__ ) . '../src/groups-tile.css', [], filemtime( plugin_dir_path( __FILE__ ) . '../src/groups-tile.css' ) );
     }
 
     public function defer_alpine( $tag, $handle ) {
@@ -33,7 +33,7 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
     }
 
     /**
-     * Render the card
+     * Render the tile
      */
     public function render() {
         //We only want to list 6 groups.
@@ -52,15 +52,15 @@ class DT_Groups_Dashboard_Card extends DT_Dashboard_Card {
         ];
         $leader_label = DT_Posts::get_post_field_settings( 'groups' )['leaders']['name'];
 
-        //The card data
-        $card = $this;
+        //The tile data
+        $tile = $this;
 
-        require( plugin_dir_path( __FILE__ ) . '../templates/groups-card.php' );
+        require( plugin_dir_path( __FILE__ ) . '../templates/groups-tile.php' );
     }
 }
 
 if ( current_user_can( 'access_groups' ) ) {
-    DT_Dashboard_Plugin_Cards::instance()->register(
-        new DT_Groups_Dashboard_Card( 'groups', __( 'Groups', 'disciple-tools-groups-card' ), [ 'priority' => 1, 'span' => 1 ] )
+    DT_Dashboard_Plugin_Tiles::instance()->register(
+        new DT_Groups_Dashboard_Tile( 'groups', __( 'Groups', 'disciple-tools-groups-tile' ), [ 'priority' => 1, 'span' => 1 ] )
     );
 }

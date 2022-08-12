@@ -1,29 +1,29 @@
 {
-  "name": "Disciple.Tools - Groups Card",
+  "name": "Disciple.Tools - Groups Tile",
   "version": "0.1",
   "last_updated": "2021-03",
   "author": "Disciple.Tools",
   "author_homepage": "https://disciple.tools",
   "git_owner": "thecodezone",
-  "git_repo": "disciple-tools-groups-card",
-  "download_url": "https://github.com/thecodezone/disciple-tools-groups-card/releases/latest/download/disciple-tools-groups-card.zip",
-  "homepage": "https://github.com/thecodezone/disciple-tools-groups-card",
-  "issues_url": "https://github.com/thecodezone/disciple-tools-groups-card/issues",
-  "projects_url": "https://github.com/thecodezone/disciple-tools-groups-card/projects/1",
-  "discussions_url": "https://github.com/thecodezone/disciple-tools-groups-card/discussions",
-  "wiki_url": "https://github.com/thecodezone/disciple-tools-groups-card/wiki",
-  "license_url": "https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-card/master/LICENSE",
-  "readme_url": "https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-card/master/README.md",
+  "git_repo": "disciple-tools-groups-tile",
+  "download_url": "https://github.com/thecodezone/disciple-tools-groups-tile/releases/latest/download/disciple-tools-groups-tile.zip",
+  "homepage": "https://github.com/thecodezone/disciple-tools-groups-tile",
+  "issues_url": "https://github.com/thecodezone/disciple-tools-groups-tile/issues",
+  "projects_url": "https://github.com/thecodezone/disciple-tools-groups-tile/projects/1",
+  "discussions_url": "https://github.com/thecodezone/disciple-tools-groups-tile/discussions",
+  "wiki_url": "https://github.com/thecodezone/disciple-tools-groups-tile/wiki",
+  "license_url": "https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-tile/master/LICENSE",
+  "readme_url": "https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-tile/master/README.md",
   "requires": "4.7",
   "tested": "5.7",
   "upgrade_notice": "Upgrade to get the latest features.",
   "banners": {
-    "low": "https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-card/master/documentation/banner.png",
-    "high": "https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-card/master/documentation/banner.png"
+    "low": "https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-tile/master/documentation/banner.png",
+    "high": "https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-tile/master/documentation/banner.png"
   },
-  "icon": "https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-card/master/documentation/icon.png",
+  "icon": "https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-tile/master/documentation/icon.png",
   "sections": {
-    "description": "This is a simple plugin that adds a group card to the Disciple.Tools dashboard. It provides a simple way to search groups, filter groups by user, and view a group’s info and health.",
+    "description": "This is a simple plugin that adds a group tile to the Disciple.Tools dashboard. It provides a simple way to search groups, filter groups by user, and view a group’s info and health.",
     "installation": "(Required) You must have Disciple.Tools Theme installed before using this plugin. Once Disciple.Tools is installed, you can use the normal Plugin system to install the plugin.",
     "changelog": ""
   }
