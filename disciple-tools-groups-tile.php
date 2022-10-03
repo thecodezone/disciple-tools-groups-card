@@ -7,7 +7,7 @@
  * Domain Path: /languages
  * Version:  0.1
  * Author URI: https://github.com/DiscipleTools
- * GitHub Plugin URI: https://github.com/DiscipleTools/disciple-tools-groups-tile
+ * GitHub Plugin URI: https://github.com/thecodezone/disciple-tools-groups-tile
  * Requires at least: 4.7.0
  * (Requires 4.7+ because of the integration of the REST API at 4.7 and the security requirements of this milestone version.)
  * Tested up to: 5.6
