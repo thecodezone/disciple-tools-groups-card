@@ -5,7 +5,7 @@
  * Description: This is a simple plugin that adds a group tile to the Disciple.Tools dashboard. It provides a simple way to search groups, filter groups by user, and view a group’s info and health.
  * Text Domain: disciple-tools-groups-tile
  * Domain Path: /languages
- * Version:  0.1
+ * Version:  1.0.0
  * Author URI: https://github.com/DiscipleTools
  * GitHub Plugin URI: https://github.com/thecodezone/disciple-tools-groups-tile
  * Requires at least: 4.7.0
