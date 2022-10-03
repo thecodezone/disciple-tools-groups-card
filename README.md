@@ -2,7 +2,7 @@
 
 ## readme format:
 
-![Plugin Banner](https://raw.githubusercontent.com/DiscipleTools/disciple-tools-groups-tile/b30402d97895e3f911efcb47fb8f29ccd1eb92e5/documentation/banner.png)
+![Plugin Banner](https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-tile/main/documentation/banner.png)
 
 # Disciple.Tools - Groups Tile
 
@@ -29,4 +29,6 @@ system for git. For a more details on contribution see the
 
 ## Screenshots
 
-![screenshot](documentation/community/starter-banners/banner-blue-green.png)
+![screenshot](https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-tile/main/documentation/screenshot_1.png)
+![screenshot](https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-tile/main/documentation/screenshot_2.png)
+![screenshot](https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-tile/main/documentation/screenshot_3.png)
