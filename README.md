@@ -15,6 +15,7 @@ This is a simple plugin that adds a group tile to the Disciple.Tools dashboard. 
 ## Installing
 
 - Install as a standard Disciple.Tools/Wordpress plugin in the system Admin/Plugins area.
+- Instll the Disciple.Tools Dashboard Plugin.
 - Requires the user role of Administrator.
 
 ## Contribution
