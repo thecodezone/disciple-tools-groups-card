@@ -1,7 +1,5 @@
 [![Build Status](https://travis-ci.com/inthecodezone/disciple-tools-groups-tile.svg?branch=master)](https://travis-ci.com/inthecodezone/disciple-tools-groups-tile)
 
-## readme format:
-
 ![Plugin Banner](https://raw.githubusercontent.com/thecodezone/disciple-tools-groups-tile/main/documentation/banner.png)
 
 # Disciple.Tools - Groups Tile
