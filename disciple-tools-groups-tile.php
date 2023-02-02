@@ -84,7 +84,10 @@ class Disciple_Tools_Groups_Tile {
         $is_rest = dt_is_rest();
 
         //Load dashboard tile class
-        require_once plugin_dir_path( __FILE__ ) . 'dashboard/groups-tile.php';
+        // check for plugin using plugin name
+        if(in_array('disciple-tools-dashboard/disciple-tools-dashboard.php', apply_filters('active_plugins', get_option('active_plugins')))){
+            require_once plugin_dir_path( __FILE__ ) . 'dashboard/groups-tile.php';
+        }
 
         $this->i18n();
     }
