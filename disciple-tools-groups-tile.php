@@ -85,7 +85,7 @@ class Disciple_Tools_Groups_Tile {
 
         //Load dashboard tile class
         // check for plugin using plugin name
-        if(in_array('disciple-tools-dashboard/disciple-tools-dashboard.php', apply_filters('active_plugins', get_option('active_plugins')))){
+        if ( in_array( 'disciple-tools-dashboard/disciple-tools-dashboard.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
             require_once plugin_dir_path( __FILE__ ) . 'dashboard/groups-tile.php';
         }
 
